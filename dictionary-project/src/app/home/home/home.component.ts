@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Word } from '../../word.model';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+// WILL NEED TO SET A TIMER FOR MIDNIGHT TO MAKE AN API CALL TO GET A RANDOM WORD, THEN INSERT INTO WORD
+  wordOftheDay = new Word('affable', 'diffusing warmth and friendliness', 'adjective', ['amiable', 'cordial', 'genial']);
 
   constructor() { }
 

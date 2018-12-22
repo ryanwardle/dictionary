@@ -1,4 +1,20 @@
 <section id="home" class="bg-light">
-  <h1 class="display-3 text-center">Vocabulibrary</h1>
-  <h2 class="text-center display-4">Word of the day</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="display-3 text-center mt-5">Vocabulibrary</h1>
+        <h2 class="text-center display-4 mt-5">Word of the day</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="mt-5 col-md-6 mx-auto d-flex justify-content-center">
+        <span>
+          <h3 class="d-inline-block">{{ wordOftheDay.word }}:</h3>
+          <p class="d-inline-block"> {{ wordOftheDay.definition }}</p>
+        </span>
+
+        <p class="d-block">{{ wordOftheDay.word }} is an {{ wordOftheDay.partOfSpeech}}. {{ wordOftheDay.partOfSpeech }} is a word or phrase naming an attribute.</p>
+      </div>
+    </div>
+  </div>
 </section>
