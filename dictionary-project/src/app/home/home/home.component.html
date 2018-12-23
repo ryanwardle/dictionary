@@ -7,12 +7,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="mt-5 col-md-6 mx-auto d-flex justify-content-center">
+      <div class="mt-5 col-12 mx-auto d-flex justify-content-center">
         <span>
           <h3 class="d-inline-block">{{ wordOftheDay.word }}:</h3>
-          <p class="d-inline-block"> {{ wordOftheDay.definition }}</p>
+          <p class="d-inline-block lead"> {{ wordOftheDay.definition }}</p>
         </span>
+      </div>
 
+      <div class="mt-3 col-12 mx-auto d-flex justify-content-center">
         <p class="d-block">{{ wordOftheDay.word }} is an {{ wordOftheDay.partOfSpeech}}. {{ wordOftheDay.partOfSpeech }} is a word or phrase naming an attribute.</p>
       </div>
     </div>
