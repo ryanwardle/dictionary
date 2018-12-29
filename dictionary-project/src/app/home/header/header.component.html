@@ -10,13 +10,13 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item mx-2 active">
-          <a href="#home" class="nav-link">Home</a>
+          <a href="#home" class="nav-link" (click)="onSelect('home')">Home</a>
         </li>
         <li class="nav-item mx-2">
-          <a href="#search" class="nav-link">Search</a>
+          <a href="#search" class="nav-link" (click)="onSelect('search')">Search</a>
         </li>
         <li class="nav-item mx-2">
-          <a href="#vocab-lists" class="nav-link">Vocabulary Lists</a>
+          <a href="#vocab-lists" class="nav-link" (click)="onSelect('lists')">Vocabulary Lists</a>
         </li>
       </ul>
     </div>

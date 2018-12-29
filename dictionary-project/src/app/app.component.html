@@ -8,8 +8,10 @@
 </head>
 <body>
 
-  <app-header></app-header>
-  <app-home></app-home>
+  <app-header (selectedFeature)="onNavigate($event)"></app-header>
+  <app-home *ngIf="loadedFeature === 'home'"></app-home>
+  <app-search *ngIf="loadedFeature === 'search'"></app-search>
+  <app-lists *ngIf="loadedFeature === 'lists'"></app-lists>
   <app-footer></app-footer>
 
 </body>
