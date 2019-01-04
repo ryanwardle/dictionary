@@ -1,12 +1,18 @@
 #search{
   min-height: 100vh;
-  position: relative;
 
+  h2{
+    text-transform: capitalize;
+  }
 
-  input{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .col-12{
+    position: relative;
+
+    .search-box{
+      position: absolute;
+      top: 35vh;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 }
