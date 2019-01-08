@@ -7,11 +7,16 @@
           <form>
             <div class="form-group d-flex flex-column align-items-center">
               <input type="text" placeholder="Search" class="form-control w-50">
-              <a href="#"(click)="onSearchWord()" class="btn btn-primary mt-5 w-25">Search</a>
+              <a href="#"(click)="onSearchWord($event)" class="btn btn-primary mt-5 w-25">Search</a>
             </div>
           </form>
         </div>
       </div>
+      <!--
+      For test purposes, should use word model to put into array and then use ngFor to print each
+      result, make a result model maybe???
+      <p>{{ definition }}</p>
+      -->
     </div>
   </div>
 </section>

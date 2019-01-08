@@ -7,16 +7,18 @@ import { GetDataService } from '../get-data.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  test;
+  wordData;
+  definition: string;
 
   constructor(private retrieveData: GetDataService) { }
 
   ngOnInit() {
   }
 
-  onSearchWord() {
-    this.test = this.retrieveData.getData();
-    console.log(this.test);
+  onSearchWord(event: any) {
+    console.log(event);
+    this.wordData = this.retrieveData.getData(event.target.previousSibling.value);
+    console.log(this.wordData);
   }
 
 }
