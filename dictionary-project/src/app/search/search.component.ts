@@ -16,9 +16,11 @@ export class SearchComponent implements OnInit {
   }
 
   onSearchWord(event: any) {
-    console.log(event);
+    // console.log(event);
     this.wordData = this.retrieveData.getData(event.target.previousSibling.value);
-    console.log(this.wordData);
+    // this.definition = this.wordData.results;
+    // console.log(this.definition);
+   console.log(this.wordData);
   }
 
 }
