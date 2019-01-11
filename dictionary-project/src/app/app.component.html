@@ -8,13 +8,19 @@
 </head>
 <body>
 
-  <app-header (selectedFeature)="onNavigate($event)"></app-header>
-  <app-home *ngIf="loadedFeature === 'home'"></app-home>
-  <app-search *ngIf="loadedFeature === 'search'"></app-search>
-  <app-lists *ngIf="loadedFeature === 'lists'"></app-lists>
+  <app-header></app-header>
+
+  <router-outlet></router-outlet>
+
   <app-footer></app-footer>
 
 </body>
 </html>
 
-<router-outlet></router-outlet>
+
+
+<!--
+ (selectedFeature)="onNavigate($event)"
+<app-home *ngIf="loadedFeature === 'home'"></app-home>
+<app-search *ngIf="loadedFeature === 'search'"></app-search>
+<app-lists *ngIf="loadedFeature === 'lists'"></app-lists> -->

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,12 @@ import { FooterComponent } from './home/footer/footer.component';
 import { SearchComponent } from './search/search.component';
 import { ListsComponent } from './lists/lists.component';
 import { HttpClientModule } from '@angular/common/http';
+
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent},
+  { path: 'search', component: SearchComponent},
+  { path: 'lists', component: ListsComponent}
+];
 
 @NgModule({
   declarations: [
@@ -22,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
