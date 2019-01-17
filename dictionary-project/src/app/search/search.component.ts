@@ -8,7 +8,6 @@ import { GetDataService } from '../get-data.service';
 })
 export class SearchComponent implements OnInit {
   wordData;
-  definition: string;
 
   constructor(private retrieveData: GetDataService) { }
 

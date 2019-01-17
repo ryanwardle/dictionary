@@ -16,7 +16,7 @@ export class GetDataService {
     // const url = '/api/v1/entries/en/';
 
       return this.http.get(`/api/v1/entries/en/${word}`)
-      .subscribe(data => {
+      .subscribe((data: any) => {
         console.log(data);
         this.definition = data.results[0].lexicalEntries[0].entries[0].senses[0].definitions[0];
         console.log(this.definition);
