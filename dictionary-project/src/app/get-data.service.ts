@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Word } from './word.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,24 @@ export class GetDataService {
   sentence;
   origin;
   partOfSpeech;
+  synonyms;
 
   constructor(private http: HttpClient) { }
 
-  getData(word: string) {
-    // const url = '/api/v1/entries/en/';
+  getRandomWord() {
 
+    // WILL NEED TO FIGURE THE CORRECT PATH AND THEN FILTER TO GET ONLY ONE WORD...AT RANDOM;
+    return this.http.get(`/api/v1/wordlist/en/lexicalcategory/noun`)
+    .subscribe((data: any) => {
+      console.log(data);
+    });
+  }
+
+  getData(word: string) {
+
+    // const url = /api/v1/entries/en/;
+
+    // Eventualyy will have to handle words that have more than one meaning
       return this.http.get(`/api/v1/entries/en/${word}`)
       .subscribe((data: any) => {
         console.log(data);
@@ -26,6 +39,8 @@ export class GetDataService {
         console.log(this.partOfSpeech);
         this.origin = data.results[0].lexicalEntries[0].entries[0].etymologies[0];
         console.log(this.origin);
+        this.synonyms = ['synonym-1', 'synonym-2'];
+        return new Word(word, this.definition, this.partOfSpeech, this.origin, this.synonyms);
       });
   }
 }

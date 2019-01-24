@@ -15,11 +15,12 @@ export class SearchComponent implements OnInit {
   }
 
   onSearchWord(event: any) {
-
-    // console.log(event);
+    console.log(event);
     this.wordData = this.retrieveData.getData(event.target.previousSibling.value);
+
     // this.definition = this.wordData.results;
     // console.log(this.definition);
+    // console.log('next');
     // console.log(this.wordData);
     // console.log(event.target.previousSibling.localName);
     //

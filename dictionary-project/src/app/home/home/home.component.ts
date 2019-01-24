@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Word } from '../../word.model';
+import { GetDataService } from '../../get-data.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,11 @@ export class HomeComponent implements OnInit {
 
   // WILL NEED TO WRTE FUNCTION OR PART OF SPEECH PORTION OF HTML
 
-  constructor() { }
+  constructor(private getData: GetDataService) { }
+
+  test() {
+    console.log(this.getData.getRandomWord());
+  }
 
   ngOnInit() {
   }
