@@ -1,9 +1,13 @@
-<section id="vocab-lists">
+<section id="vocab-lists" class="bg-light">
   <div class="container">
     <div class="row">
-      <div class="col">
-        <p>Vocab Lists</p>
+      <div class="col mt-5 d-flex justify-content-around">
+        <a class="btn btn-success rounded text-white" (click)="onCreateNewList()">Create new list</a>
+        <a class="btn btn-primary rounded text-white" (click)="onEditList()">Edit list</a>
+        <a class="btn btn-danger rounded text-white" (click)="onDeleteList()">Delete list</a>
       </div>
     </div>
   </div>
+
+  <router-outlet></router-outlet>
 </section>
