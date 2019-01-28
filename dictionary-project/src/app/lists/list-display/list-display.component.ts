@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { List } from '../../list.model';
 
 @Component({
   selector: 'app-list-display',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-display.component.scss']
 })
 export class ListDisplayComponent implements OnInit {
+  @Input() list: List;
+  @Input() id: number;
 
   constructor() { }
 

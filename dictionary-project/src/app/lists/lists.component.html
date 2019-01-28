@@ -9,5 +9,6 @@
     </div>
   </div>
 
-  <router-outlet></router-outlet>
+  <app-list-display *ngFor="let list of lists; let i = index"
+  [list]="list" [id]="i"></app-list-display>
 </section>

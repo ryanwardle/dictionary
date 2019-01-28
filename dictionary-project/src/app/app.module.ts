@@ -14,6 +14,7 @@ import { ListDisplayComponent } from './lists/list-display/list-display.componen
 import { NewListComponent } from './lists/new-list/new-list.component';
 import { EditListComponent } from './lists/edit-list/edit-list.component';
 import { DeleteListComponent } from './lists/delete-list/delete-list.component';
+import { IndividualListComponent } from './lists/list-display/individual-list/individual-list.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     ListDisplayComponent,
     NewListComponent,
     EditListComponent,
-    DeleteListComponent
+    DeleteListComponent,
+    IndividualListComponent
   ],
   imports: [
     BrowserModule,
