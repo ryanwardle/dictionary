@@ -7,9 +7,12 @@
         <a class="btn btn-danger rounded text-white" (click)="onDeleteList()">Delete list</a>
       </div>
     </div>
-  </div>
 
-  <app-list-display *ngFor="let list of lists; let i = index"
-  [list]="list" [id]="i"></app-list-display>
-  <router-outlet></router-outlet>
+    <app-list-display *ngFor="let list of lists; let i = index"
+    [list]="list" [id]="i"></app-list-display>
+    <!-- <app-list-display></app-list-display> -->
+    <router-outlet></router-outlet>
+  </div>
 </section>
+
+<!-- NEED TO FINISH FIGUING OUT THE LOOP AND ADDING/ DISPLAYNG LISTS AND WORDS -->

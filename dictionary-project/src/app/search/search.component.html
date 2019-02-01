@@ -10,6 +10,8 @@
               <a routerLink="/search" (click)="onSearchWord($event)" class="btn btn-primary mt-5 w-25">Search</a>
             </div>
           </form>
+          <!-- ANYTHING OUTSIDE OF THIS DIV IS DISPLAYED AT THE TOP OF THE PAGE INSTEAD OF AFTER DIV -->
+          <!-- <a style="cursor: pointer;" class="btn btn-success text-white">Add word to list</a> -->
         </div>
       </div>
       <!--
@@ -17,7 +19,11 @@
       result, make a result model maybe???
       <p>{{ definition }}</p>
       -->
-      {{ this.definition }}
+      <!-- {{ this.definition }} -->
+
+
+
+
     </div>
   </div>
 </section>

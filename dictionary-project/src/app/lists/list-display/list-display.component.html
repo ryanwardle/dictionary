@@ -1,4 +1,7 @@
-<!-- NEED TO FIGURE OUT BEST WAY TO DISPLAY LISTS, USE BOOTSTRAP CARDS MAYBE? -->
-<p>delete this test, display used to structure lists</p>
-
-<app-individual-list></app-individual-list>
+<div class="row">
+  <div class="col-md-6 d-flex justify-content-center text-center">
+    <app-individual-list></app-individual-list>
+    <!-- {{ list.word }} -->
+    {{ lists[0].word.word }}
+  </div>
+</div>
