@@ -8,7 +8,6 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./lists.component.scss']
 })
 export class ListsComponent implements OnInit {
-// lists: List[];
 
   constructor(private router: Router,
               private route: ActivatedRoute) { }

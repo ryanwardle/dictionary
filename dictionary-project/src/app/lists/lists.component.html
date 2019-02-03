@@ -8,8 +8,7 @@
       </div>
     </div>
 
-    <app-list-display *ngFor="let list of lists; let i = index"
-    [list]="list" [id]="i"></app-list-display>
+    <app-list-display *ngFor="let list of lists"></app-list-display>
     <!-- <app-list-display></app-list-display> -->
     <router-outlet></router-outlet>
   </div>

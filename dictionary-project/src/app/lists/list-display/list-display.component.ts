@@ -9,15 +9,17 @@ import { ListService } from '../../list.service';
 })
 export class ListDisplayComponent implements OnInit {
   lists: List[];
-  @Input() list: List;
-  @Input() id: number;
+  // word;
+  // word = this.lists[0].word.word
+  // @Input() list: List;
+  // @Input() id: number;
+
 
   constructor(private listService: ListService) { }
 
   ngOnInit() {
     this.lists = this.listService.getLists();
     console.log(this.lists);
-    // console.log(this.id);
   }
 
 }
