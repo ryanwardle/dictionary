@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { List } from '../../list.model';
 import { ListService } from '../../list.service';
 
@@ -9,11 +9,6 @@ import { ListService } from '../../list.service';
 })
 export class ListDisplayComponent implements OnInit {
   lists: List[];
-  // word;
-  // word = this.lists[0].word.word
-  // @Input() list: List;
-  // @Input() id: number;
-
 
   constructor(private listService: ListService) { }
 
