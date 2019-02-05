@@ -4,9 +4,8 @@
 import { Word } from './word.model';
 
 export class List {
-  public word: Word;
 
-  constructor(word: Word) {
-    this.word = word;
+  constructor(public words: Word[]) {
+    this.words = words;
   }
 }
