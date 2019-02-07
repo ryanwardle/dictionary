@@ -8,6 +8,8 @@ import { WordService } from './word.service';
 })
 export class ListService {
 
+  constructor(private words: WordService) { }
+
   private lists: List[] = [
     new List(this.words.getWords())
     // new List(new Word('milk', `an opaque white fluid rich in fat and protein, secreted by
@@ -15,8 +17,6 @@ export class ListService {
     // related to Dutch melk and German Milch, from an Indo-European root shared by Latin mulgere
     // and Greek amelgein ‘to milk’`, ['synonym1', 'synonym2', 'synonym3']))
   ];
-
-  constructor(private words: WordService) { }
 
   getLists() {
     // console.log(this.lists.slice());

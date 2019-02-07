@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { List } from '../../list.model';
-// import { Word } from '../../word.model';
+import { Word } from '../../word.model';
 import { ListService } from '../../list.service';
 
 @Component({
@@ -9,14 +9,15 @@ import { ListService } from '../../list.service';
   styleUrls: ['./list-display.component.scss']
 })
 export class ListDisplayComponent implements OnInit {
-  // words: Word[];
+  words: Word[];
   list: List[];
 
   constructor(private listService: ListService) { }
 
   ngOnInit() {
     this.list = this.listService.getLists();
-    console.log(this.list);
+    this.words = this.list[0].words;
+    console.log(this.words);
   }
 
 }

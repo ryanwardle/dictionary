@@ -11,6 +11,7 @@ export class GetDataService {
   origin;
   partOfSpeech;
   synonyms;
+  // returnWord: Word;
 
   constructor(private http: HttpClient) { }
 
@@ -24,7 +25,6 @@ export class GetDataService {
   }
 
   getData(word: string) {
-
     // const url = /api/v1/entries/en/;
 
     // Eventualyy will have to handle words that have more than one meaning
@@ -33,15 +33,17 @@ export class GetDataService {
         // console.log(data);
         this.definition = data.results[0].lexicalEntries[0].entries[0].senses[0].definitions[0];
         // return this.definition;
-        console.log(this.definition);
-        this.sentence = data.results;
-        console.log(this.sentence);
+        // console.log(this.definition);
+        // this.sentence = data.results;
+        // console.log(this.sentence);
         this.partOfSpeech = data.results[0].lexicalEntries[0].lexicalCategory;
-        console.log(this.partOfSpeech);
+        // console.log(this.partOfSpeech);
         this.origin = data.results[0].lexicalEntries[0].entries[0].etymologies[0];
-        console.log(this.origin);
-        // this.synonyms = ['synonym-1', 'synonym-2'];
-        // return new Word(word, this.definition, this.partOfSpeech, this.origin, this.synonyms);
+        // console.log(this.origin);
+        this.synonyms = ['synonym-1', 'synonym-2'];
+        console.log(new Word(word, this.definition, this.partOfSpeech, this.origin, this.synonyms));
+        return new Word(word, this.definition, this.partOfSpeech, this.origin, this.synonyms);
+
       });
   }
 }

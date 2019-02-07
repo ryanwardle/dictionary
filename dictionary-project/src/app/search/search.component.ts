@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../get-data.service';
+import { Word } from '../word.model';
 
 @Component({
   selector: 'app-search',
@@ -7,7 +8,7 @@ import { GetDataService } from '../get-data.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  wordData;
+  wordData: Word;
 
   constructor(private retrieveData: GetDataService) { }
 
@@ -18,13 +19,5 @@ export class SearchComponent implements OnInit {
     // console.log(event);
     this.wordData = this.retrieveData.getData(event.target.previousSibling.value);
     console.log(this.wordData);
-    // this.definition = this.wordData.results;
-    // console.log(this.definition);
-    // console.log('next');
-    // console.log(this.wordData);
-    // console.log(event.target.previousSibling.localName);
-    //
-    // console.log('yes');
   }
-
 }
