@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../get-data.service';
-import { Word } from '../word.model';
+// import { Word } from '../word.model';
 
 @Component({
   selector: 'app-search',
@@ -8,7 +8,7 @@ import { Word } from '../word.model';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  wordData: Word;
+  wordData: any;
 
   constructor(private retrieveData: GetDataService) { }
 
