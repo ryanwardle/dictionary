@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <div class="search-box w-100">
-          <h2 class="display-4 mb-5">Search dictionary for word</h2>
+        <div class="search-box  w-100">
+          <h2 class="display-4 mb-5 mt-1">Search dictionary for word</h2>
           <form>
             <div class="form-group d-flex flex-column align-items-center">
               <input (keydown.enter)="onSearchWord($event)" type="text" placeholder="Search" class="form-control w-50">
@@ -12,18 +12,27 @@
           </form>
           <!-- ANYTHING OUTSIDE OF THIS DIV IS DISPLAYED AT THE TOP OF THE PAGE INSTEAD OF AFTER DIV -->
           <!-- <a style="cursor: pointer;" class="btn btn-success text-white">Add word to list</a> -->
+
+          <div class="card text-center w-100">
+            <div class="card-header lead">
+              Search results
+            </div>
+            <div class="card-body">
+              <h3>{{ word }}</h3>
+              <p class="font-italic mt-1">{{ partOfSpeech }}</p>
+              <p class="lead mt-1">{{ definition }}</p>
+              <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" data-target="#collapse-btn">Learn More</button>
+              <div class="collapse" id="collapse-btn">
+                <h5 class="mt-2">Etymology</h5>
+                <p class="lead">{{ origin}}</p>
+                <h5>Synonyms</h5>
+                <p>{{ synonyms }}</p>
+              </div>
+              <hr>
+            </div>
+          </div>
         </div>
       </div>
-      <!--
-      For test purposes, should use word model to put into array and then use ngFor to print each
-      result, make a result model maybe???
-      <p>{{ definition }}</p>
-      -->
-      <!-- {{ this.definition }} -->
-
-
-
-
     </div>
   </div>
 </section>
