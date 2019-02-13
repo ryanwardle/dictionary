@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../get-data.service';
-// import { Word } from '../word.model';
+import { Word } from '../word.model';
 
 @Component({
   selector: 'app-search',
@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit {
   partOfSpeech;
   synonyms;
   word;
+  searchResult;
 
   constructor(private retrieveData: GetDataService) { }
 
@@ -30,6 +31,7 @@ export class SearchComponent implements OnInit {
       this.origin = data.results[0].lexicalEntries[0].entries[0].etymologies[0];
       this.synonyms = ['synonym-1', 'synonym-2'];
       this.word = event.target.previousSibling.value;
+      this.searchResult =  new Word (this.word, this.definition, this.partOfSpeech, this.origin, this.synonyms);
     });
   }
 }
