@@ -17,29 +17,21 @@
   </div>
 </ng-template> -->
 
-<section *ngIf="searchResult.word !== undefined" id="search-result" class="bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="card text-center w-100 mb-5">
-          <div class="card-header lead">
-            Search results
-          </div>
-          <div class="card-body">
-            <h3>{{ searchResult.word }}</h3>
-            <p class="font-italic mt-1">{{ searchResult.partOfSpeech }}</p>
-            <p class="lead mt-1">{{ searchResult.definition }}</p>
-            <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" data-target="#collapse-btn">Learn More</button>
-            <div class="collapse" id="collapse-btn">
-              <h5 class="mt-2">Etymology</h5>
-              <p class="lead">{{ searchResult.origin }}</p>
-              <h5>Synonyms</h5>
-              <p>{{ searchResult.synonyms }}</p>
-            </div>
-            <hr>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="card text-center w-100 mt-5 mb-5" *ngIf="searchResult.word !== undefined">
+  <div class="card-header lead">
+    Search results
   </div>
-</section>
+  <div class="card-body">
+    <h3>{{ searchResult.word }}</h3>
+    <p class="font-italic mt-1">{{ searchResult.partOfSpeech }}</p>
+    <p class="lead mt-1">{{ searchResult.definition }}</p>
+    <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" data-target="#collapse-btn">Learn More</button>
+    <div class="collapse" id="collapse-btn">
+      <h5 class="mt-2">Etymology</h5>
+      <p class="lead">{{ searchResult.origin }}</p>
+      <h5>Synonyms</h5>
+      <p>{{ searchResult.synonyms }}</p>
+    </div>
+    <hr>
+  </div>
+</div>
