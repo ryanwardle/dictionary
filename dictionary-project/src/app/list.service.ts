@@ -19,7 +19,6 @@ export class ListService {
   ];
 
   getLists() {
-    // console.log(this.lists.slice());
     return this.lists.slice();
   }
 }
