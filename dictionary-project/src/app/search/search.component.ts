@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   synonyms;
   word;
   searchResult;
+  submittedWord;
 
   constructor(private retrieveData: GetDataService) { }
 
@@ -22,7 +23,14 @@ export class SearchComponent implements OnInit {
   }
 
   onSearchWord(event: any) {
-      this.wordData = this.retrieveData.getData(event.target.previousSibling.value);
+    // GETTING VALUE OF SUBMITTED WORD FROM EITHER ENTER OR CLICK EVENT, THEN CALLING API WITH THAT VALUE
+      if (event.key === 'Enter') {
+        this.submittedWord = event.target.value;
+        this.wordData = this.retrieveData.getData(this.submittedWord);
+      } else {
+        this.submittedWord = event.target.previousSibling.value;
+        this.wordData = this.retrieveData.getData(this.submittedWord);
+      }
 
 // CREATING A NEW WORD, BASED ON RETURNED DATA FROM API CALL
       this.wordData.subscribe((data: any) => {
@@ -30,7 +38,7 @@ export class SearchComponent implements OnInit {
       this.partOfSpeech = data.results[0].lexicalEntries[0].lexicalCategory;
       this.origin = data.results[0].lexicalEntries[0].entries[0].etymologies[0];
       this.synonyms = ['synonym-1', 'synonym-2'];
-      this.word = event.target.previousSibling.value;
+      this.word = this.submittedWord.toLowerCase();
       this.searchResult =  new Word (this.word, this.definition, this.partOfSpeech, this.origin, this.synonyms);
     });
   }
