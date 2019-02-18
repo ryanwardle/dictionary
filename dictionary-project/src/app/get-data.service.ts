@@ -11,7 +11,10 @@ export class GetDataService {
   getRandomWord() {
 
     // WILL NEED TO FIGURE THE CORRECT PATH AND THEN FILTER TO GET ONLY ONE WORD...AT RANDOM;
-    return this.http.get(`/api/v1/wordlist/en/lexicalcategory/noun`)
+
+    // GOING TO NEED TO THINK OF MORE FILTERS TO GET THE LIST DOWN AND USE ALL 26 LETTERS
+    // MAYBE RANDOM PARTOFSPEECH, RANDOM LETTER, RANDOM LENGTH ETC...
+    return this.http.get(`/api/v1/wordlist/en/lexicalCategory=Noun;regions=us`)
     .subscribe((data: any) => {
       console.log(data);
     });

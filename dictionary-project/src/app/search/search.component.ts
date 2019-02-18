@@ -32,7 +32,8 @@ export class SearchComponent implements OnInit {
         this.submittedWord = event.target.previousSibling.value;
       }
 
-// FIRST USING LEMMATRON TO GET CORRECT FORM OF THE ENTERED WORD
+      // FIRST USING LEMMATRON TO GET CORRECT FORM OF THE ENTERED WORD
+      // NEED TO FIGURE OUT A WAY TO OPTIMIZE, NOT ALL WORDS WILL SHOW UP I.E. (ATE)
       this.corretForm = this.retrieveData.getCorrectForm(this.submittedWord);
       this.corretForm.subscribe(data => {
         console.log(data.results[0].lexicalEntries[0]);
@@ -40,7 +41,7 @@ export class SearchComponent implements OnInit {
 
         this.wordData = this.retrieveData.getData(this.correctWord);
 
-// USE CORRECT FORM OF WORD FROM LEMMATRON TO GET WORD INFO
+        // USE CORRECT FORM OF WORD FROM LEMMATRON TO GET WORD INFO
           this.wordData.subscribe((correctedWordData: any) => {
           this.definition = correctedWordData.results[0].lexicalEntries[0].entries[0].senses[0].definitions[0];
           this.partOfSpeech = correctedWordData.results[0].lexicalEntries[0].lexicalCategory;
