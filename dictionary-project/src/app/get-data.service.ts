@@ -17,9 +17,13 @@ export class GetDataService {
     });
   }
 
+  getCorrectForm(word: string) {
+    return this.http.get(`/api/v1/inflections/en/${word}`);
+  }
+
   getData(word: string): any {
 
     // Eventualyy will have to handle words that have more than one meaning
-      return this.http.get(`/api/v1/entries/en/${word}`);
+      return this.http.get(`/api/v1/entries/en/${word}/regions=us`);
   }
 }
