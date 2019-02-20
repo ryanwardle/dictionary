@@ -11,13 +11,18 @@ export class GetDataService {
   getRandomWord() {
 
     // WILL NEED TO FIGURE THE CORRECT PATH AND THEN FILTER TO GET ONLY ONE WORD...AT RANDOM;
+    const lexicalCategories = ['noun', 'verb', 'adjective', 'adverb'];
+    const lexicalCategoryNumber = Math.floor(Math.random() * lexicalCategories.length);
+    const lexicalCategory = lexicalCategories[lexicalCategoryNumber];
+
+// NEED TO FIGURE OUT DOAMINS
+    const domains = ['music', 'politics', 'medicine'];
+    const domainsNumber = Math.floor(Math.random() * domains.length);
+    const domain = domains[domainsNumber];
 
     // GOING TO NEED TO THINK OF MORE FILTERS TO GET THE LIST DOWN AND USE ALL 26 LETTERS
     // MAYBE RANDOM PARTOFSPEECH, RANDOM LETTER, RANDOM LENGTH ETC...
-    return this.http.get(`/api/v1/wordlist/en/lexicalCategory=Noun;regions=us`)
-    .subscribe((data: any) => {
-      console.log(data);
-    });
+    return this.http.get(`/api/v1/wordlist/en/lexicalCategory=${lexicalCategory};regions=us;domains=${domain}`);
   }
 
   getCorrectForm(word: string) {
