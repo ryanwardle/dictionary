@@ -5,6 +5,12 @@ import { Word } from './word.model';
   providedIn: 'root'
 })
 export class WordService {
+  word;
+  definition;
+  partOfSpeech;
+  origin;
+  synonyms;
+  wordInfo;
 
   private words: Word[] = [
     new Word('cheese', `a food made from the pressed curds of milk, firm and
@@ -18,5 +24,19 @@ export class WordService {
 
   getWords() {
     return this.words.slice();
+  }
+
+  createWord(data: any) {
+    this.definition = data.results[0].lexicalEntries[0].entries[0].senses[0].definitions[0];
+    this.partOfSpeech = data.results[0].lexicalEntries[0].lexicalCategory;
+    this.origin = data.results[0].lexicalEntries[0].entries[0].etymologies[0];
+
+    // NEED TO GET SYNONYMS AND THEN MAKE CLICKABLE SO THAT YOU CAN THEN SEARCH THAT WORD
+    this.synonyms = ['synonym-1', 'synonym-2'];
+
+    this.word = data.results[0].word;
+
+    // CREATING A NEW WORD, BASED ON RETURNED DATA FROM API CALL
+    return new Word (this.word, this.definition, this.partOfSpeech, this.origin, this.synonyms);
   }
 }

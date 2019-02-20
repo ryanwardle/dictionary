@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../get-data.service';
-import { Word } from '../word.model';
+// import { Word } from '../word.model';
+import { WordService } from '../word.service';
 
 @Component({
   selector: 'app-search',
@@ -9,17 +10,13 @@ import { Word } from '../word.model';
 })
 export class SearchComponent implements OnInit {
   wordData: any;
-  definition;
-  origin;
-  partOfSpeech;
-  synonyms;
-  word;
   searchResult;
   submittedWord;
   corretForm;
   correctWord;
 
-  constructor(private retrieveData: GetDataService) { }
+  constructor(private retrieveData: GetDataService,
+              private wordService: WordService) { }
 
   ngOnInit() {
   }
@@ -43,17 +40,8 @@ export class SearchComponent implements OnInit {
 
         // USE CORRECT FORM OF WORD FROM LEMMATRON TO GET WORD INFO
           this.wordData.subscribe((correctedWordData: any) => {
-          this.definition = correctedWordData.results[0].lexicalEntries[0].entries[0].senses[0].definitions[0];
-          this.partOfSpeech = correctedWordData.results[0].lexicalEntries[0].lexicalCategory;
-          this.origin = correctedWordData.results[0].lexicalEntries[0].entries[0].etymologies[0];
 
-          // NEED TO GET SYNONYMS AND THEN MAKE CLICKABLE SO THAT YOU CAN THEN SEARCH THAT WORD
-          this.synonyms = ['synonym-1', 'synonym-2'];
-
-          this.word = this.correctWord.toLowerCase();
-
-          // CREATING A NEW WORD, BASED ON RETURNED DATA FROM API CALL
-          this.searchResult =  new Word (this.word, this.definition, this.partOfSpeech, this.origin, this.synonyms);
+          this.searchResult = this.wordService.createWord(correctedWordData);
         });
 
       });

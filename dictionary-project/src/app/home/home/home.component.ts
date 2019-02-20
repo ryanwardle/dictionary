@@ -18,15 +18,32 @@ export class HomeComponent implements OnInit {
 
   constructor(private getData: GetDataService) { }
 
+
+// WILL NEED TO CHANGE THIS FROM CLICK EVENT TO PUTTING ON A 24HR TIMER, SET TIME OUT FUNCTION?
   test() {
     this.getData.getRandomWord()
     .subscribe((data: any) => {
 
-      // NEED TO FIX TO GET PROPER RANDOM NUMBER WITHIN RANGE
-      const randomNumber = Math.random() * data.results.length;
+//   CREATE RANDOM NUMBER TO GET BASED ON ARRAY RETURNED FROM WORDLIST CALL
+      const randomNumber = Math.floor(Math.random() * data.results.length);
       this.randomWord = data.results[randomNumber].word;
       console.log(data);
       console.log(this.randomWord);
+
+      // this.getData.getData(this.randomWord)
+      // .subscribe(randomWordData => {
+      //   this.definition = correctedWordData.results[0].lexicalEntries[0].entries[0].senses[0].definitions[0];
+      //   this.partOfSpeech = correctedWordData.results[0].lexicalEntries[0].lexicalCategory;
+      //   this.origin = correctedWordData.results[0].lexicalEntries[0].entries[0].etymologies[0];
+      //
+      //   // NEED TO GET SYNONYMS AND THEN MAKE CLICKABLE SO THAT YOU CAN THEN SEARCH THAT WORD
+      //   this.synonyms = ['synonym-1', 'synonym-2'];
+      //
+      //   this.word = this.correctWord.toLowerCase();
+      //
+      //   // CREATING A NEW WORD, BASED ON RETURNED DATA FROM API CALL
+      //   this.searchResult =  new Word (this.word, this.definition, this.partOfSpeech, this.origin, this.synonyms);
+      // });
     });
   }
 
