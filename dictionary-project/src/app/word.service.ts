@@ -32,7 +32,7 @@ export class WordService {
     this.origin = data.results[0].lexicalEntries[0].entries[0].etymologies[0];
 
     // NEED TO GET SYNONYMS AND THEN MAKE CLICKABLE SO THAT YOU CAN THEN SEARCH THAT WORD
-    this.synonyms = ['synonym-1', 'synonym-2'];
+    this.synonyms = ['synonym-1', 'synonym-2'].join(' ');
 
     this.word = data.results[0].word;
 
