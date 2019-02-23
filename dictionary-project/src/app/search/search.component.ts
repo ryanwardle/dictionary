@@ -16,6 +16,7 @@ export class SearchComponent implements OnInit {
   correctWord;
   addedWord;
   createAddedWord;
+  completeAddedWord;
 
   constructor(private retrieveData: GetDataService,
               private wordService: WordService) { }
@@ -52,7 +53,11 @@ export class SearchComponent implements OnInit {
 // NEED TO FIGURE OUT HOW TO GET CORRECT FORM OF WORD THEN ADD THAT, MAY NEED TO
 // CREATE A SERVICE FOR THAT, WILL NEED TO SEE WHAT NEW API CAN DO.
   onAddWord(event: any) {
-    this.addedWord = event.previousSibling.children[0].value;
-    this.createAddedWord = this.wordService.createWord(this.addedWord);
+    this.addedWord = event.target.previousSibling.children[0].value;
+    this.createAddedWord = this.retrieveData.getData(this.addedWord);
+    this.createAddedWord.subscribe((addedWordData: any) => {
+      this.completeAddedWord = this.wordService.createWord(addedWordData);
+      this.wordService.addWord(this.completeAddedWord);
+    });
   }
 }

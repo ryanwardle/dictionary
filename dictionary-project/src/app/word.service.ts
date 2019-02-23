@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Word } from './word.model';
 
 @Injectable({
@@ -11,6 +11,7 @@ export class WordService {
   origin;
   synonyms;
   wordInfo;
+  wordAdded = new EventEmitter<Word[]>();
 
   private words: Word[] = [
     new Word('cheese', `a food made from the pressed curds of milk, firm and
@@ -38,5 +39,10 @@ export class WordService {
 
     // CREATING A NEW WORD, BASED ON RETURNED DATA FROM API CALL
     return new Word (this.word, this.definition, this.partOfSpeech, this.origin, this.synonyms);
+  }
+
+  addWord(word: Word) {
+    this.words.push(word);
+    this.wordAdded.emit(this.words.slice());
   }
 }
