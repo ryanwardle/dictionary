@@ -1,19 +1,15 @@
-
-<!-- NEED TO GIURE OUT HOW TO MAKE ALL LEARN MORE BUTTONS INDEPENDENT INSTEAD OF ONE OPENING
-AND CLOSING ALL OF THEM , THEY ARE EITHER ALL OOPEN OR ALL CLOSEDE -->
-
 <div class="row justify-content-center">
   <div class="col-md-6 offset-1 mt-5 mb-5 d-flex justify-content-center text-center">
     <div class="card text-center w-100">
       <div class="card-header lead">
         Name of List
       </div>
-      <div class="card-body" *ngFor="let word of words">
+      <div class="card-body" *ngFor="let word of words; let i = index">
         <h3>{{ word.word }}</h3>
         <p class="font-italic mt-1">{{ word.partOfSpeech }}</p>
         <p class="lead mt-1">{{ word.definition }}</p>
-        <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" data-target="#collapse-btn">Learn More</button>
-        <div class="collapse" id="collapse-btn">
+        <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" attr.data-target="#collapse{{ i }}">Learn More</button>
+        <div class="collapse" id="collapse{{ i }}">
           <h5 class="mt-2">Etymology</h5>
           <p class="lead">{{ word.origin}}</p>
           <h5>Synonyms</h5>
