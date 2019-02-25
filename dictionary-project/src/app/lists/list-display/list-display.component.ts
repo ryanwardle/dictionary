@@ -12,6 +12,8 @@ import { WordService } from '../../word.service';
 export class ListDisplayComponent implements OnInit {
   words: Word[];
   list: List[];
+  buttonToggleText = 'More';
+  toggle = false;
 
   constructor(private listService: ListService,
               private wordService: WordService) { }
@@ -26,5 +28,16 @@ export class ListDisplayComponent implements OnInit {
       this.words = words;
       console.log(this.words);
     });
+  }
+
+// CONSOLIDATE SEARCH, LISTS AND HOME. USE SERVICE?
+  buttonToggle() {
+    if (this.toggle) {
+      this.buttonToggleText = 'More';
+      this.toggle = !this.toggle;
+    } else {
+      this.buttonToggleText = 'Less';
+      this.toggle = !this.toggle;
+    }
   }
 }

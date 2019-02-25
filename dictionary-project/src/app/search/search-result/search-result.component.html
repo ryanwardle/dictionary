@@ -25,7 +25,7 @@
     <h3>{{ searchResult.word }}</h3>
     <p class="font-italic mt-1">{{ searchResult.partOfSpeech }}</p>
     <p class="lead mt-1">{{ searchResult.definition }}</p>
-    <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" data-target="#collapse-btn">Learn More</button>
+    <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" (click)="buttonToggle()" data-target="#collapse-btn">Learn {{ buttonToggleText }}</button>
     <div class="collapse" id="collapse-btn">
       <h5 class="mt-2">Etymology</h5>
       <p class="lead">{{ searchResult.origin }}</p>

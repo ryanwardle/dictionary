@@ -8,7 +8,7 @@
         <h3>{{ word.word }}</h3>
         <p class="font-italic mt-1">{{ word.partOfSpeech }}</p>
         <p class="lead mt-1">{{ word.definition }}</p>
-        <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" attr.data-target="#collapse{{ i }}">Learn More</button>
+        <button class="btn btn-primary mt-3 mb-3"  (click)="buttonToggle()" data-toggle="collapse" attr.data-target="#collapse{{ i }}">View {{ buttonToggleText }}</button>
         <div class="collapse" id="collapse{{ i }}">
           <h5 class="mt-2">Etymology</h5>
           <p class="lead">{{ word.origin}}</p>

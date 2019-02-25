@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   wordOftheDay = new Word('affable', 'diffusing warmth and friendliness', 'adjective',
   'Old English and Germanic', ['amiable', 'cordial', 'genial']);
   randomWord;
+  toggle = false;
+  buttonToggleText = 'More';
 
   // WILL NEED TO WRTE FUNCTION OR PART OF SPEECH PORTION OF HTML
 
@@ -48,6 +50,18 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+
+// CONSOLIDATE SEARCH, LISTS AND HOME. USE SERVICE? ALSO MAY NEED TO EDIT HTML WHEN I CHANGE
+  buttonToggle() {
+    if (this.toggle) {
+      this.buttonToggleText = 'More';
+      this.toggle = !this.toggle;
+    } else {
+      this.buttonToggleText = 'Less';
+      this.toggle = !this.toggle;
+    }
   }
 
 }

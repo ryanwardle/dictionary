@@ -8,10 +8,23 @@ import { Word } from '../../word.model';
 })
 export class SearchResultComponent implements OnInit {
   @Input() searchResult: Word;
+  toggle = false;
+  buttonToggleText = 'More';
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+// CONSOLIDATE SEARCH, LISTS AND HOME. USE SERVICE? ALSO MAY NEED TO EDIT HTML WHEN I CHANGE
+  buttonToggle() {
+    if (this.toggle) {
+      this.buttonToggleText = 'More';
+      this.toggle = !this.toggle;
+    } else {
+      this.buttonToggleText = 'Less';
+      this.toggle = !this.toggle;
+    }
   }
 
 }
