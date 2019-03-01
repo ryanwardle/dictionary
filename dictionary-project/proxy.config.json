@@ -9,16 +9,7 @@
       "app_id": "7b834f0c",
       "app_key": "ffbc1bb9fa456f3ac2e235ea8a029067"
     }
-  },
-
-  "/wordnikApi/*": {
-    "target": "https://api.wordnik.com",
-    "secure": true,
-    "changeOrigin": true,
-    "logLevel": "debug",
-    "headers": {
-      "Accept": "application/json",
-      "app_key": "56c735eb82fb941fa410001a222052c450245ab2819539b92"
-    }
   }
+
+  /* NEED TO FIGURE OUT HOW TO DO THIS WITH WORDNIK API ALSO  */
 }

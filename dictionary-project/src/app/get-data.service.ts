@@ -8,8 +8,11 @@ export class GetDataService {
 
   constructor(private http: HttpClient) { }
 
+  // NEED TO SWITCH OUT EVERYTHING FROM OXFORD TO WORDNIK, CAN PROBABLY JUST SWITCH OUT IN
+   // CONFIG FILE AND NOT EVEN USE OXFORD AT ALL
+
   getRandomWord() {
-    return this.http.get(`wordnikApi/v4/words.json/randomWord`);
+    return this.http.get(`http://api.wordnik.com/v4/words.json/randomWord?api_key=YOURKEYHERE`);
   }
 
   getCorrectForm(word: string) {
