@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../get-data.service';
-// import { Word } from '../word.model';
+import { Word } from '../word.model';
 import { WordService } from '../word.service';
 
 @Component({
@@ -12,8 +12,7 @@ export class SearchComponent implements OnInit {
   wordData: any;
   searchResult;
   submittedWord;
-  corretForm;
-  correctWord;
+  returnedWord;
   addedWord;
   createAddedWord;
   completeAddedWord;
@@ -24,29 +23,20 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
+
+// MAY HAVE TO WORK IN ATTRIBUTION TEXT INTO EACH DEFIINTION, OR USE OF APIS
   onSearchWord(event: any) {
     // GETTING VALUE OF SUBMITTED WORD FROM EITHER ENTER OR CLICK EVENT, THEN CALLING API WITH THAT VALUE
       if (event.key === 'Enter') {
-        this.submittedWord = event.target.value;
+        this.submittedWord = event.target.value.toLowerCase();
       } else {
-        this.submittedWord = event.target.previousSibling.value;
+        this.submittedWord = event.target.previousSibling.value.toLowerCase();
       }
 
-      // FIRST USING LEMMATRON TO GET CORRECT FORM OF THE ENTERED WORD
-      // NEED TO FIGURE OUT A WAY TO OPTIMIZE, NOT ALL WORDS WILL SHOW UP I.E. (ATE)
-      this.corretForm = this.retrieveData.getCorrectForm(this.submittedWord);
-      this.corretForm.subscribe(data => {
-        console.log(data.results[0].lexicalEntries[0]);
-        this.correctWord = data.results[0].lexicalEntries[0].inflectionOf[0].text;
-
-        this.wordData = this.retrieveData.getData(this.correctWord);
-
-        // USE CORRECT FORM OF WORD FROM LEMMATRON TO GET WORD INFO
-          this.wordData.subscribe((correctedWordData: any) => {
-
-          this.searchResult = this.wordService.createWord(correctedWordData);
-        });
-
+      this.returnedWord = this.retrieveData.getData(this.submittedWord).subscribe(data => {
+        // MAY HAVE TO MAKE A DIFFERENT CALL FOR ORIGIN AND SYNONYMS
+        this.searchResult = new Word (this.submittedWord, data[0].text, data[0].partOfSpeech, '', ['', '']);
+          console.log(data);
       });
   }
 

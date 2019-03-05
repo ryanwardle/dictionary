@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
 
 
 // WILL NEED TO CHANGE THIS FROM CLICK EVENT TO PUTTING ON A 24HR TIMER, SET TIME OUT FUNCTION?
+// cAN START WORKING ON DOING THIS BY USING A WORD OF THE DAY CALL AND ONCE EVERY 24 HRS
   test() {
     this.getData.getRandomWord()
     .subscribe((data: any) => {
