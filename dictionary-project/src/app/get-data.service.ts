@@ -8,8 +8,7 @@ export class GetDataService {
   key = '';
   constructor(private http: HttpClient) { }
 
-  // NEED TO SWITCH OUT EVERYTHING FROM OXFORD TO WORDNIK, CAN PROBABLY JUST SWITCH OUT IN
-   // CONFIG FILE AND NOT EVEN USE OXFORD AT ALL
+// NEED TO FIGURE OUT HOW TO TAKE CARE OF PROXY SERVER, OR FIGURE OUT HOW TO HIDE API KEYSS
 
   getRandomWord() {
     return this.http.get(`https://api.wordnik.com/v4/words.json/randomWord?api_key=${this.key}`);

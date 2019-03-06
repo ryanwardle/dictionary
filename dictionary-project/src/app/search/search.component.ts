@@ -23,6 +23,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
+// CAN AUTOMATICALLY REDIRECT TO PAGE IF THE WORD HAS A ROOT, IT WILL SAY "SEE {{ ROOT WORD }}"
 
 // MAY HAVE TO WORK IN ATTRIBUTION TEXT INTO EACH DEFIINTION, OR USE OF APIS
   onSearchWord(event: any) {
