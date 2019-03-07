@@ -20,15 +20,22 @@
     <div class="col-12">
       <div class="card text-center w-100 mt-5 mb-1">
         <div class="card-body">
-          <h3>{{ wordOftheDay.word }}</h3>
-          <p class="font-italic mt-1">{{ wordOftheDay.partOfSpeech }}</p>
-          <p class="lead mt-1">{{ wordOftheDay.definition }}</p>
+          <h3>{{ wordOfTheDay.word }}</h3>
+          <p class="font-italic mt-1">{{ wordOfTheDay.partOfSpeech }}</p>
+          <p class="lead mt-1">{{ wordOfTheDay.definition }}</p>
           <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" (click)="buttonToggle()" data-target="#collapse-btn">Learn {{ buttonToggleText }}</button>
           <div class="collapse" id="collapse-btn">
-            <h5 class="mt-2">Etymology</h5>
-            <p class="lead">{{ wordOftheDay.origin }}</p>
+            <!-- <h5 class="mt-2">Etymology</h5>
+            <p class="lead">{{ wordOfTheDay.origin }}</p>
+            IF I STICK TO THIS, I NEED TO CHANGE THE NAME FROM ORIGIN IN WORD MODEL
+            IF THE NOTE THEY GIVE IS NOT ALWAYS ABOUT ETYMOLOGY, OR IF I CANT FIND
+            CONSISTENT ETYMOLOGY DATA
+
+            ALSO NEED TO FIND SYNONYMS
+          -->
+            <p class="lead">{{ wordOfTheDay.origin }}</p>
             <h5>Synonyms</h5>
-            <p>{{ wordOftheDay.synonyms }}</p>
+            <p>{{ wordOfTheDay.synonyms }}</p>
           </div>
           <hr>
         </div>

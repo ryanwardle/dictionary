@@ -13,6 +13,10 @@ export class SearchComponent implements OnInit {
   searchResult;
   submittedWord;
   returnedWord;
+  defintion;
+  partOfSpeech;
+  origin;
+  synonyms;
   addedWord;
   createAddedWord;
   completeAddedWord;
@@ -35,8 +39,20 @@ export class SearchComponent implements OnInit {
       }
 
       this.returnedWord = this.retrieveData.getData(this.submittedWord).subscribe(data => {
+        console.log(data);
+        this.defintion =  data[0][0].text;
+        this.partOfSpeech = data[0][0].partOfSpeech;
+        this.origin = data[1][0];
         // MAY HAVE TO MAKE A DIFFERENT CALL FOR ORIGIN AND SYNONYMS
-        this.searchResult = new Word (this.submittedWord, data[0].text, data[0].partOfSpeech, '', ['', '']);
+        const relatedWordsArray = data[2];
+
+        relatedWordsArray.map(obj => {
+          if (obj.relationshipType === 'synonym') {
+            this.synonyms = obj.words.join(' ');
+          }
+        });
+
+        this.searchResult = new Word (this.submittedWord, this.defintion, this.partOfSpeech, this.origin, this.synonyms);
           console.log(data);
       });
   }
