@@ -13,9 +13,9 @@ export class SearchComponent implements OnInit {
   searchResult;
   submittedWord;
   returnedWord;
-  defintion;
+  definition;
   partOfSpeech;
-  origin;
+  antonyms;
   synonyms;
   addedWord;
   createAddedWord;
@@ -38,33 +38,24 @@ export class SearchComponent implements OnInit {
         this.submittedWord = event.target.previousSibling.value.toLowerCase();
       }
 
-      this.returnedWord = this.retrieveData.getData(this.submittedWord).subscribe(data => {
-        console.log(data);
-        this.defintion =  data[0][0].text;
-        this.partOfSpeech = data[0][0].partOfSpeech;
-        this.origin = data[1][0];
-        // MAY HAVE TO MAKE A DIFFERENT CALL FOR ORIGIN AND SYNONYMS
-        const relatedWordsArray = data[2];
+// HAVE CREATED A METHOD IN WORD SERVICE TO CREAT WORDS AND IT IS USED IN BOTH SEARCHWORD AND ADDWORD,
+// NEED TO FIGURE OUT HOW TO GET DATA FROM SERVICE PROPERLY
 
-        relatedWordsArray.map(obj => {
-          if (obj.relationshipType === 'synonym') {
-            this.synonyms = obj.words.join(' ');
-          }
-        });
-
-        this.searchResult = new Word (this.submittedWord, this.defintion, this.partOfSpeech, this.origin, this.synonyms);
-          console.log(data);
-      });
+      this.searchResult = this.wordService.createWord(this.submittedWord);
+        console.log(this.searchResult);
   }
 
 // NEED TO FIGURE OUT HOW TO GET CORRECT FORM OF WORD THEN ADD THAT, MAY NEED TO
 // CREATE A SERVICE FOR THAT, WILL NEED TO SEE WHAT NEW API CAN DO.
   onAddWord(event: any) {
     this.addedWord = event.target.previousSibling.children[0].value;
-    this.createAddedWord = this.retrieveData.getData(this.addedWord);
-    this.createAddedWord.subscribe((addedWordData: any) => {
-      this.completeAddedWord = this.wordService.createWord(addedWordData);
-      this.wordService.addWord(this.completeAddedWord);
-    });
+    // this.createAddedWord = this.retrieveData.getData(this.addedWord);
+    // this.createAddedWord.subscribe((addedWordData: any) => {
+    //   this.completeAddedWord = this.wordService.createWord(addedWordData);
+    //   this.wordService.addWord(this.completeAddedWord);
+    // });
+
+    this.createAddedWord = this.wordService.createWord(this.addedWord);
+    this.wordService.addWord(this.createAddedWord);
   }
 }

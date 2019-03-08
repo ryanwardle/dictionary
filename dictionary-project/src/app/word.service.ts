@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Word } from './word.model';
+import { GetDataService } from './get-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,11 @@ export class WordService {
   word;
   definition;
   partOfSpeech;
-  origin;
+  antonyms;
   synonyms;
-  wordInfo;
+  returnedWord;
+  result;
+  // wordInfo;
   wordAdded = new EventEmitter<Word[]>();
 
   private words: Word[] = [
@@ -21,24 +24,32 @@ export class WordService {
     `Old English brēad, of Germanic origin; related to Dutch brood and German Brot`, ['synonym5', 'synonym7', 'synonym3'])
   ];
 
-  constructor() { }
+  constructor(private retrieveData: GetDataService) { }
 
   getWords() {
     return this.words.slice();
   }
 
-  createWord(data: any) {
-    this.definition = data.results[0].lexicalEntries[0].entries[0].senses[0].definitions[0];
-    this.partOfSpeech = data.results[0].lexicalEntries[0].lexicalCategory;
-    this.origin = data.results[0].lexicalEntries[0].entries[0].etymologies[0];
+  createWord(word: string) {
+    this.returnedWord = this.retrieveData.getData(word).subscribe(data => {
+      console.log(data);
+      this.definition =  data[0][0].text;
+      this.partOfSpeech = data[0][0].partOfSpeech;
+      // MAY HAVE TO MAKE A DIFFERENT CALL FOR ORIGIN AND SYNONYMS
+      const relatedWordsArray = data[1];
 
-    // NEED TO GET SYNONYMS AND THEN MAKE CLICKABLE SO THAT YOU CAN THEN SEARCH THAT WORD
-    this.synonyms = ['synonym-1', 'synonym-2'].join(' ');
+      relatedWordsArray.map(obj => {
+        if (obj.relationshipType === 'synonym') {
+          this.synonyms = obj.words.join(' ');
+        }
 
-    this.word = data.results[0].word;
+        if (obj.relationshipType === 'antonym') {
+          this.antonyms = obj.words.join(' ');
+        }
+      });
 
-    // CREATING A NEW WORD, BASED ON RETURNED DATA FROM API CALL
-    return new Word (this.word, this.definition, this.partOfSpeech, this.origin, this.synonyms);
+      return new Word (word, this.definition, this.partOfSpeech, this.antonyms, this.synonyms);
+    });
   }
 
   addWord(word: Word) {

@@ -30,7 +30,7 @@ export class ListDisplayComponent implements OnInit {
     });
   }
 
-// CONSOLIDATE SEARCH, LISTS AND HOME. USE SERVICE?
+// CONSOLIDATE SEARCH, LISTS AND HOME. USE SERVICE? ALSO MAY NEED TO EDIT HTML WHEN I CHANGE
   buttonToggle() {
     if (this.toggle) {
       this.buttonToggleText = 'More';
