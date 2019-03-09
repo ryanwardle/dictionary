@@ -25,23 +25,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    // WILL NEED TO CHANGE THIS FROM CLICK EVENT TO PUTTING ON A 24HR TIMER, SET TIME OUT FUNCTION?
-    // cAN START WORKING ON DOING THIS BY USING A WORD OF THE DAY CALL AND ONCE EVERY 24 HRS
-    // Use the date to check if the word should be changed, stack overflow, tab open
-
     this.getData.getWordOfDay().subscribe((data: any) => {
-      console.log(data);
       const word = data.word;
-      console.log(word);
       const definition = data.definitions[0].text;
       const partOfSpeech = data.definitions[0].partOfSpeech;
       const origin = data.note;
-      console.log(definition);
 
       // NEED TO FIND SYNONYMS
 
-      this.wordOfTheDay = new Word (word, definition, partOfSpeech, origin, ['', '']);
-      console.log(this.wordOfTheDay);
+      this.wordOfTheDay = new Word (word, definition, partOfSpeech, origin, ['']);
     });
   }
 

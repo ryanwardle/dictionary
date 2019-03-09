@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Word } from './word.model';
 import { GetDataService } from './get-data.service';
+// import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,8 @@ export class WordService {
     return this.words.slice();
   }
 
+  // NEED TO FIGURE OUT HOW TO GET THIS DATA INTO THE SEARCH COMPONENT
+// : Observable<Word>
   createWord(word: string) {
     this.returnedWord = this.retrieveData.getData(word).subscribe(data => {
       console.log(data);
@@ -47,9 +50,13 @@ export class WordService {
           this.antonyms = obj.words.join(' ');
         }
       });
+      // this.result = new Word (word, this.definition, this.partOfSpeech, this.antonyms, this.synonyms);
+      // console.log(new Word (word, this.definition, this.partOfSpeech, this.antonyms, this.synonyms));
+      // return this.result;
 
       return new Word (word, this.definition, this.partOfSpeech, this.antonyms, this.synonyms);
     });
+    // return new Word (word, this.definition, this.partOfSpeech, this.antonyms, this.synonyms);
   }
 
   addWord(word: Word) {

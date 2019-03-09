@@ -10,6 +10,7 @@ import { WordService } from '../word.service';
 })
 export class SearchComponent implements OnInit {
   wordData: any;
+  searchInput;
   searchResult;
   submittedWord;
   returnedWord;
@@ -27,7 +28,6 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
-// CAN AUTOMATICALLY REDIRECT TO PAGE IF THE WORD HAS A ROOT, IT WILL SAY "SEE {{ ROOT WORD }}"
 
 // MAY HAVE TO WORK IN ATTRIBUTION TEXT INTO EACH DEFIINTION, OR USE OF APIS
   onSearchWord(event: any) {
@@ -41,8 +41,16 @@ export class SearchComponent implements OnInit {
 // HAVE CREATED A METHOD IN WORD SERVICE TO CREAT WORDS AND IT IS USED IN BOTH SEARCHWORD AND ADDWORD,
 // NEED TO FIGURE OUT HOW TO GET DATA FROM SERVICE PROPERLY
 
+
+      // this.searchInput = this.wordService.createWord(this.submittedWord).subscribe(newWord => {
+      //   console.log(newWord);
+      //   // this.searchResult =  newWord;
+      // });
+
+// TRYING TO MAKE SURE THAT I CAN GET DATA FROM SERVICE, MAY HAVE TO LOOK INTO OBSERABLES MORE
+
       this.searchResult = this.wordService.createWord(this.submittedWord);
-        console.log(this.searchResult);
+      console.log(this.searchResult);
   }
 
 // NEED TO FIGURE OUT HOW TO GET CORRECT FORM OF WORD THEN ADD THAT, MAY NEED TO
