@@ -1,23 +1,4 @@
-<!-- <ng-template #noResultFound>
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="card text-center w-100 mb-5">
-          <div class="card-header lead">
-            Search results
-          </div>
-          <div class="card-body">
-            <h3>We're sorry, we could not find your search entry, please check the
-            spelling and try again.</h3>
-            <hr>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-template> -->
-
-<div class="card text-center w-100 mt-5 mb-5" *ngIf="searchResult.word !== undefined">
+<div class="card text-center w-100 mt-5 mb-5" *ngIf="searchResult.word !== undefined; else noResultFound">
   <div class="card-header lead">
     Search Results
   </div>
@@ -40,3 +21,22 @@
     </a>
   </div>
 </div>
+
+<ng-template #noResultFound>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="card text-center w-100 mb-5 mt-5">
+          <div class="card-header lead">
+            Search results
+          </div>
+          <div class="card-body">
+            <h3>We're sorry, we could not find your search entry, please check the
+            spelling and try again.</h3>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

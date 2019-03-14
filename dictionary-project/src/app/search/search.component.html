@@ -15,7 +15,7 @@
             <input routerLink="/search" (keyup.enter)="onSearchWord($event)" placeholder="Search" class="form-control w-50">
             <a routerLink="/search" (click)="onSearchWord($event)" class="btn btn-primary rounded text-white mt-5 w-25">Search</a>
           </div>
-          <a style="cursor: pointer;" (click)="onAddWord($event)" class="btn btn-success rounded text-white mt-3">Add word to list</a>
+          <a style="cursor: pointer;" (click)="onAddWord()" class="btn btn-success rounded text-white mt-3">Add word to list</a>
         </div>
         <app-search-result [searchResult]="searchResult"></app-search-result>
       </div>

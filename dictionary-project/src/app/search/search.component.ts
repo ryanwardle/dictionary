@@ -41,29 +41,30 @@ export class SearchComponent implements OnInit {
 // HAVE CREATED A METHOD IN WORD SERVICE TO CREAT WORDS AND IT IS USED IN BOTH SEARCHWORD AND ADDWORD,
 // NEED TO FIGURE OUT HOW TO GET DATA FROM SERVICE PROPERLY
 
+      this.returnedWord = this.retrieveData.getData(this.submittedWord).subscribe(data => {
+        console.log(data);
+        this.definition =  data[0][0].text;
+        this.partOfSpeech = data[0][0].partOfSpeech;
+        // MAY HAVE TO MAKE A DIFFERENT CALL FOR ORIGIN AND SYNONYMS
+        const relatedWordsArray = data[1];
 
-      // this.searchInput = this.wordService.createWord(this.submittedWord).subscribe(newWord => {
-      //   console.log(newWord);
-      //   // this.searchResult =  newWord;
-      // });
+        relatedWordsArray.map(obj => {
+          if (obj.relationshipType === 'synonym') {
+            this.synonyms = obj.words.join(' ');
+          }
 
-// TRYING TO MAKE SURE THAT I CAN GET DATA FROM SERVICE, MAY HAVE TO LOOK INTO OBSERABLES MORE
-
-      this.searchResult = this.wordService.createWord(this.submittedWord);
-      console.log(this.searchResult);
+          if (obj.relationshipType === 'antonym') {
+            this.antonyms = obj.words.join(' ');
+          }
+        });
+        this.searchResult = new Word (this.submittedWord, this.definition, this.partOfSpeech, this.antonyms, this.synonyms);
+      });
   }
+
 
 // NEED TO FIGURE OUT HOW TO GET CORRECT FORM OF WORD THEN ADD THAT, MAY NEED TO
 // CREATE A SERVICE FOR THAT, WILL NEED TO SEE WHAT NEW API CAN DO.
-  onAddWord(event: any) {
-    this.addedWord = event.target.previousSibling.children[0].value;
-    // this.createAddedWord = this.retrieveData.getData(this.addedWord);
-    // this.createAddedWord.subscribe((addedWordData: any) => {
-    //   this.completeAddedWord = this.wordService.createWord(addedWordData);
-    //   this.wordService.addWord(this.completeAddedWord);
-    // });
-
-    this.createAddedWord = this.wordService.createWord(this.addedWord);
-    this.wordService.addWord(this.createAddedWord);
+  onAddWord() {
+    this.wordService.addWord(this.searchResult);
   }
 }
