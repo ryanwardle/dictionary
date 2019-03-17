@@ -6,7 +6,7 @@ import { forkJoin, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GetDataService {
-  key = '';
+  key = 's';
   constructor(private http: HttpClient) { }
 
 // NEED TO FIGURE OUT HOW TO TAKE CARE OF PROXY SERVER, OR FIGURE OUT HOW TO HIDE API KEYSS
