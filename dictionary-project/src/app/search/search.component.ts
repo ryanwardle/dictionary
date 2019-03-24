@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
   searchResult: Word = new Word ('', '', '', [''], ['']);
   submittedWord;
   returnedWord;
+  word;
   definition;
   partOfSpeech;
   antonyms;
