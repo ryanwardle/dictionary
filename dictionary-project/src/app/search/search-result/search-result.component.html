@@ -1,4 +1,4 @@
-<div class="card text-center w-100 mt-5 mb-5" *ngIf="searchResult.word !== undefined; else noResultFound">
+<div class="card text-center w-100 mt-5 mb-5" *ngIf="wordCheck !== undefined; else noResultFound">
   <div class="card-header lead">
     Search Results
   </div>
@@ -31,7 +31,7 @@
             Search results
           </div>
           <div class="card-body">
-            <h3>We're sorry, we could not find your search entry, please check the
+            <h3>We're sorry, we could not find your search entry. Please check the
             spelling and try again.</h3>
             <hr>
           </div>

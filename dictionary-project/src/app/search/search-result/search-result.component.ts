@@ -8,6 +8,7 @@ import { Word } from '../../word.model';
 })
 export class SearchResultComponent implements OnInit {
   @Input() searchResult: Word;
+  @Input() wordCheck: string;
   toggle = false;
   buttonToggleText = 'More';
 
