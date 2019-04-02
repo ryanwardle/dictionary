@@ -70,6 +70,9 @@ export class SearchComponent implements OnInit {
 
 // ADDS WORD TO WORD LIST
   onAddWord() {
-    this.wordService.addWord(this.searchResult);
+    console.log(this.wordCheck === undefined);
+    if (this.wordCheck !== undefined) {
+      this.wordService.addWord(this.searchResult);
+    }
   }
 }
