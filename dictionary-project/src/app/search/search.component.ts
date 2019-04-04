@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit {
   submittedWord;
   wordCheck = '';
   returnedWord;
+  attributionText;
   word;
   definition;
   partOfSpeech;
@@ -29,6 +30,7 @@ export class SearchComponent implements OnInit {
 // METHOD THAT GETS WORD DATA AND ORGANIZES INTO WORD MODEL
   getWordData(word): any {
     this.returnedWord = this.retrieveData.getData(word).subscribe(data => {
+      this.attributionText = data[0][0].attributionText;
       this.wordCheck = data[0][0];
       this.definition =  data[0][0].text;
       this.partOfSpeech = data[0][0].partOfSpeech;

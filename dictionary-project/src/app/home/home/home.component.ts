@@ -29,6 +29,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.getData.getWordOfDay().subscribe((data: any) => {
+      // NEED TO FIGURE OUT HOW TO GET ATTRIBUTION TEXT IN WORD OF DAY, TRY TO DO WITHOUT CALLING,
+      // ANY NEW SERVICES, MAY NEED TO JUST GET WORD OF DAY AND THEN RUN THAT THROUGH THE SEARCH WORD SERVICES
+      console.log(data);
       const word = data.word;
       const definition = data.definitions[0].text;
       const partOfSpeech = data.definitions[0].partOfSpeech;
