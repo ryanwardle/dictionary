@@ -1,4 +1,4 @@
-<ng-container *ngIf="wordCheck == ''; else displayContent"></ng-container>
+<ng-container *ngIf="wordCheck === ''; else displayContent"></ng-container>
 
 <ng-template #displayContent>
   <ng-container *ngIf="wordCheck !== undefined; else noResultFound">
@@ -16,7 +16,7 @@
           <h5 class="mt-2">Antonyms</h5>
           <p class="lead">{{ searchResult.antonyms }}</p>
           <h5>Synonyms</h5>
-          <p>{{ searchResult.synonyms }}</p>
+          <p class="lead">{{ searchResult.synonyms }}</p>
         </div>
         <hr>
         <a target="_blank" href="https://www.wordnik.com/words/{{ searchResult.word }}">

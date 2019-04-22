@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
   searchResult: Word = new Word ('', '', '', [''], ['']);
   submittedWord;
   wordCheck = '';
+  // wordCheck = -1;
   returnedWord;
   attributionText;
   word;
@@ -30,6 +31,7 @@ export class SearchComponent implements OnInit {
 // METHOD THAT GETS WORD DATA AND ORGANIZES INTO WORD MODEL
   getWordData(word): any {
     this.returnedWord = this.retrieveData.getData(word).subscribe(data => {
+      console.log(data);
       this.attributionText = data[0][0].attributionText;
       this.wordCheck = data[0][0];
       this.definition =  data[0][0].text;
