@@ -1,7 +1,7 @@
-<ng-container *ngIf="wordCheck === ''; else displayContent"></ng-container>
+<ng-container *ngIf="wordCheck === -1; else displayContent"></ng-container>
 
 <ng-template #displayContent>
-  <ng-container *ngIf="wordCheck !== undefined; else noResultFound">
+  <ng-container *ngIf="wordCheck > 0; else noResultFound">
     <div class="card text-center w-100 mt-5 mb-5">
       <div class="card-header lead">
         Search Results
