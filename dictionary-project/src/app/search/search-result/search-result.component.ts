@@ -8,10 +8,11 @@ import { Word } from '../../word.model';
 })
 export class SearchResultComponent implements OnInit {
   @Input() searchResult: Word;
-  @Input() wordCheck: string;
-  // @Input() wordCheck: number;
+  @Input() wordCheck: number;
   @Input() submittedWord: string;
   @Input() attributionText: string;
+  @Input() antonymLength: number;
+  @Input() synonymLength: number;
   toggle = false;
   buttonToggleText = 'More';
 

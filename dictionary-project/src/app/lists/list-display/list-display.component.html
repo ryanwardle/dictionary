@@ -10,8 +10,8 @@
         <p class="lead mt-1">{{ word.definition }}</p>
         <button class="btn btn-primary mt-3 mb-3"  (click)="buttonToggle()" data-toggle="collapse" attr.data-target="#collapse{{ i }}">View {{ buttonToggleText }}</button>
         <div class="collapse" id="collapse{{ i }}">
-          <h5 class="mt-2">Etymology</h5>
-          <p class="lead">{{ word.origin}}</p>
+          <h5 class="mt-2">Antonyms</h5>
+          <p class="lead">{{ word.antonyms }}</p>
           <h5>Synonyms</h5>
           <p>{{ word.synonyms }}</p>
         </div>

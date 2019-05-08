@@ -19,7 +19,9 @@ export class SearchComponent implements OnInit {
   definition;
   partOfSpeech;
   antonyms;
+  antonymLength = 0;
   synonyms;
+  synonymLength = 0;
 
   constructor(private retrieveData: GetDataService,
               private wordService: WordService) { }
@@ -39,11 +41,13 @@ export class SearchComponent implements OnInit {
 
       relatedWordsArray.map(obj => {
         if (obj.relationshipType === 'synonym') {
-          this.synonyms = obj.words.join(' ');
+          this.synonyms = obj.words.join(', ');
+          this.synonymLength = this.synonyms.length;
         }
 
         if (obj.relationshipType === 'antonym') {
-          this.antonyms = obj.words.join(' ');
+          this.antonyms = obj.words.join(', ');
+          this.antonymLength = this.antonyms.length;
         }
       });
       this.searchResult = new Word (word, this.definition, this.partOfSpeech, this.antonyms, this.synonyms);

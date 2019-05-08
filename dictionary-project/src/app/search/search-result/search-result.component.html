@@ -13,10 +13,14 @@
         <p>{{ attributionText }}</p>
         <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" (click)="buttonToggle()" data-target="#collapse-btn">Learn {{ buttonToggleText }}</button>
         <div class="collapse" id="collapse-btn">
-          <h5 class="mt-2">Antonyms</h5>
-          <p class="lead">{{ searchResult.antonyms }}</p>
-          <h5>Synonyms</h5>
-          <p class="lead">{{ searchResult.synonyms }}</p>
+          <div *ngIf="antonymLength > 0">
+            <h5 class="mt-2">Antonyms</h5>
+            <p class="lead">{{ searchResult.antonyms }}</p>
+          </div>
+          <div *ngIf="synonymLength > 0">
+            <h5>Synonyms</h5>
+            <p class="lead">{{ searchResult.synonyms }}</p>
+          </div>
         </div>
         <hr>
         <a target="_blank" href="https://www.wordnik.com/words/{{ searchResult.word }}">
