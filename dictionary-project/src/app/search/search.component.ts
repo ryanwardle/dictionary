@@ -22,6 +22,7 @@ export class SearchComponent implements OnInit {
   antonymLength = 0;
   synonyms;
   synonymLength = 0;
+  error = 0;
 
   constructor(private retrieveData: GetDataService,
               private wordService: WordService) { }
@@ -33,6 +34,7 @@ export class SearchComponent implements OnInit {
   getWordData(word): any {
     this.returnedWord = this.retrieveData.getData(word).subscribe(data => {
       this.wordCheck = data[0].length;
+      this.error = 1;
       this.attributionText = data[0][0].attributionText;
       this.definition =  data[0][0].text;
       this.partOfSpeech = data[0][0].partOfSpeech;
@@ -51,7 +53,11 @@ export class SearchComponent implements OnInit {
         }
       });
       this.searchResult = new Word (word, this.definition, this.partOfSpeech, this.antonyms, this.synonyms);
-    });
+    },
+
+  error => this.error = error.status
+    );
+    console.log(this.error);
   }
 
   // GETTING VALUE OF SUBMITTED WORD FROM EITHER ENTER OR CLICK EVENT, THEN CALLING GETWORDDATA();
