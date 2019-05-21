@@ -1,10 +1,17 @@
 <section id="vocab-lists" class="bg-light">
   <div class="container">
     <div class="row">
-      <div class="col mt-5 d-flex justify-content-around">
-        <a class="btn btn-success rounded text-white" (click)="onCreateNewList()">Create new list</a>
-        <a class="btn btn-primary rounded text-white" (click)="onEditList()">Edit list</a>
-        <a class="btn btn-danger rounded text-white" (click)="onDeleteList()">Delete list</a>
+      <div class="col mt-5 d-flex flex-column align-items-center align-self-center">
+        <!-- <a class="btn btn-success rounded text-white" (click)="onCreateNewList()">Create new list</a> -->
+        <div class="col-6 d-flex justify-content-around">
+          <a class="btn btn-primary rounded text-white" (click)="onEditList()">Edit list</a>
+          <a class="btn btn-danger rounded text-white" (click)="onDeleteList()">Delete list</a>
+        </div>
+
+        <div class="col-6 d-flex justify-content-center mt-5">
+          <input class="w-75" type="text">
+          <a class="btn btn-success rounded text-white" (click)="onCreateNewList()">Create new list</a>
+        </div>
       </div>
     </div>
 
