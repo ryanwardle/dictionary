@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { List } from './list.model';
 // import { Word } from './word.model';
 import { WordService } from './word.service';
@@ -7,16 +7,28 @@ import { WordService } from './word.service';
   providedIn: 'root'
 })
 export class ListService {
+  listAdded = new EventEmitter<string[]>();
 
   constructor(private words: WordService) { }
 
-  private lists: List[] = [
-    new List(this.words.getWords())
-    // new List(new Word('milk', `an opaque white fluid rich in fat and protein, secreted by
-    // female mammals for the nourishment of their young`, 'noun', `Old English milc, milcian, of Germanic origin;
-    // related to Dutch melk and German Milch, from an Indo-European root shared by Latin mulgere
-    // and Greek amelgein ‘to milk’`, ['synonym1', 'synonym2', 'synonym3']))
-  ];
+  // private lists: List[] = [
+  //   new List(this.words.getWords())
+  //   // new List(new Word('milk', `an opaque white fluid rich in fat and protein, secreted by
+  //   // female mammals for the nourishment of their young`, 'noun', `Old English milc, milcian, of Germanic origin;
+  //   // related to Dutch melk and German Milch, from an Indo-European root shared by Latin mulgere
+  //   // and Greek amelgein ‘to milk’`, ['synonym1', 'synonym2', 'synonym3']))
+  // ];
+  //
+  // getLists() {
+  //   return this.lists.slice();
+  // }
+
+  private lists: string[] = ['test', 'rest', 'best'];
+
+  addNewList(newList: string) {
+    this.lists.push(newList);
+    this.listAdded.emit(this.lists.slice());
+  }
 
   getLists() {
     return this.lists.slice();

@@ -30,11 +30,28 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
+  // GETTING VALUE OF SUBMITTED WORD FROM EITHER ENTER OR CLICK EVENT, THEN CALLING GETWORDDATA();
+  onSearchWord(event: any) {
+    if (event.key === 'Enter') {
+      this.submittedWord = event.target.value.toLowerCase();
+    } else {
+      this.submittedWord = event.target.previousSibling.value.toLowerCase();
+    }
+
+    this.getWordData(this.submittedWord);
+  }
+
+
 // METHOD THAT GETS WORD DATA AND ORGANIZES INTO WORD MODEL
   getWordData(word): any {
     this.returnedWord = this.retrieveData.getData(word).subscribe(data => {
+      console.log(data);
       this.wordCheck = data[0].length;
       this.error = 1;
+
+      // SOME WORDS I MAY NEED TO GO TO DATA[0][1], NEED TO CREATE A CHECK FOR WHICH ONE
+      // TO GET THE DATA FROM
+
       this.attributionText = data[0][0].attributionText;
       this.definition =  data[0][0].text;
       this.partOfSpeech = data[0][0].partOfSpeech;
@@ -57,18 +74,6 @@ export class SearchComponent implements OnInit {
 
   error => this.error = error.status
     );
-    console.log(this.error);
-  }
-
-  // GETTING VALUE OF SUBMITTED WORD FROM EITHER ENTER OR CLICK EVENT, THEN CALLING GETWORDDATA();
-  onSearchWord(event: any) {
-    if (event.key === 'Enter') {
-      this.submittedWord = event.target.value.toLowerCase();
-    } else {
-      this.submittedWord = event.target.previousSibling.value.toLowerCase();
-    }
-
-    this.getWordData(this.submittedWord);
   }
 
 // GETS A RANDOM WORD, THEN CALLS GETWORDDATA();

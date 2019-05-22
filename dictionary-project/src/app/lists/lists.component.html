@@ -9,16 +9,17 @@
         </div>
 
         <div class="col-6 d-flex justify-content-center mt-5">
-          <input class="w-75" type="text">
-          <a class="btn btn-success rounded text-white" (click)="onCreateNewList()">Create new list</a>
+          <input class="w-75" type="text" placeholder="Enter name of new list" (keyup.enter)="onCreateNewList($event)">
+          <a class="btn btn-success rounded text-white" style="cursor: pointer;" (click)="onCreateNewList($event)">Create new list</a>
         </div>
       </div>
     </div>
 
     <!-- GOING TO NEED TO FIGURE OUT HOW TO DISPLAY LISTS, THEN WORDS WITHIN EACH LIST -->
     <!-- <app-list-display *ngFor="let word of words" *ngFor="list of lists"></app-list-display> -->
+  <!-- *ngFor="let word of words" -->
 
-    <app-list-display *ngFor="let word of words"></app-list-display>
+    <app-list-display *ngFor="let list of lists"></app-list-display>
 
     <router-outlet></router-outlet>
   </div>
