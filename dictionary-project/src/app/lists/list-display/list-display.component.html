@@ -17,13 +17,13 @@
           <p class="font-italic mt-1">Verb</p>
           <p class="lead mt-1">This is the definition of the word</p>
           <p>This is the attribution text</p>
-          <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" (click)="buttonToggle()" data-target="#collapse-btn">Learn More</button>
-          <div class="collapse" id="collapse-btn">
-            <div *ngIf="antonymLength > 0">
+          <a href="#collapse-btn-{{ i }}" class="btn btn-primary mt-3 mb-3" data-parent="#accordian" data-toggle="collapse">Learn {{ buttonToggleText }}</a>
+          <div class="collapse" id="collapse-btn-{{ i }}">
+            <div>
               <h5 class="mt-2">Antonyms</h5>
               <p class="lead">antonym1, antonym5</p>
             </div>
-            <div *ngIf="synonymLength > 0">
+            <div>
               <h5>Synonyms</h5>
               <p class="lead">synonym7, synonym3</p>
             </div>

@@ -5,7 +5,12 @@ import { Word } from './word.model';
 
 export class List {
 
-  constructor(public words: Word[]) {
+  // constructor(public words: Word[]) {
+  //   this.words = words;
+  // }
+
+  constructor(public name: string, public words: Word[]) {
+    this.name = name;
     this.words = words;
   }
 }

@@ -7,7 +7,7 @@ import { WordService } from './word.service';
   providedIn: 'root'
 })
 export class ListService {
-  listAdded = new EventEmitter<string[]>();
+  listAdded = new EventEmitter<List[]>();
 
   constructor(private words: WordService) { }
 
@@ -23,10 +23,11 @@ export class ListService {
   //   return this.lists.slice();
   // }
 
-  private lists: string[] = ['test', 'rest', 'best'];
+  private lists: List[] = [];
+  // private lists: string[] = ['test', 'rest', 'best'];
 
   addNewList(newList: string) {
-    this.lists.push(newList);
+    this.lists.push(new List(newList, []));
     this.listAdded.emit(this.lists.slice());
   }
 

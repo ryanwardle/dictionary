@@ -13,7 +13,7 @@ import { WordService } from '../../word.service';
 })
 export class ListDisplayComponent implements OnInit {
   words: Word[];
-  lists: string[];
+  lists: List[];
   buttonToggleText = 'More';
   toggle = false;
   @Input() listName;
@@ -21,9 +21,12 @@ export class ListDisplayComponent implements OnInit {
   constructor(private listService: ListService,
               private wordService: WordService) { }
 
+// CHANGED LIST MODEL TO INCLUDE NAME OF LIST, STILL TRYING TO FIGURE OUT HOW TO ORGANIZE LISTS,
+// NEED TO FIGURE OUT HOW TO PROERLY GET NAME OF LIST NOW THAT I HAVE MADE CHANGES
+
   ngOnInit() {
     this.lists = this.listService.getLists();
-    this.listService.listAdded.subscribe((lists: string[]) => {
+    this.listService.listAdded.subscribe((lists: List[]) => {
       this.lists = lists;
     });
 
