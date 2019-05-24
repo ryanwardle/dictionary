@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../get-data.service';
 import { Word } from '../word.model';
 import { WordService } from '../word.service';
+import { ListService } from '../list.service';
 
 @Component({
   selector: 'app-search',
@@ -23,9 +24,11 @@ export class SearchComponent implements OnInit {
   synonyms;
   synonymLength = 0;
   error = 0;
+  lists;
 
   constructor(private retrieveData: GetDataService,
-              private wordService: WordService) { }
+              private wordService: WordService,
+              private listService: ListService) { }
 
   ngOnInit() {
   }
@@ -51,6 +54,7 @@ export class SearchComponent implements OnInit {
 
       // SOME WORDS I MAY NEED TO GO TO DATA[0][1], NEED TO CREATE A CHECK FOR WHICH ONE
       // TO GET THE DATA FROM
+      // EXAMPLES OF WORDS THAT DONT SHOW DFINITION: BAD AND MOUSE
 
       this.attributionText = data[0][0].attributionText;
       this.definition =  data[0][0].text;
@@ -85,11 +89,26 @@ export class SearchComponent implements OnInit {
     });
   }
 
+
+
+
 // ADDS WORD TO WORD LIST
+// NEED TO CHANGE THIS SO ON CLICK, USER CHOOSES WHICH LIST TO ADD WORD TO.
+
   onAddWord() {
-    console.log(this.wordCheck === undefined);
-    if (this.wordCheck !== undefined) {
-      this.wordService.addWord(this.searchResult);
-    }
+    // console.log(this.wordCheck === undefined);
+    // if (this.wordCheck !== undefined) {
+    //   this.wordService.addWord(this.searchResult);
+    // }
+
+    // ADDS LISTS TO DOM IN UL FORM
+
+    // NEED TO WORK ON CENTERING 
+    this.lists = this.listService.getLists();
+  }
+
+// SELECTS LIST THAT WAS CLICKED ON AND ADDS WORD TO LIST
+  onSelectList() {
+
   }
 }

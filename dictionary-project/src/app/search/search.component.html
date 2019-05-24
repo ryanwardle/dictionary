@@ -4,7 +4,7 @@
       <div class="col-12 d-flex flex-column text-center">
         <div class="search-box w-100">
           <h2 class="display-4 mb-5 mt-5 text-capitalize">Search dictionary for word</h2>
-          
+
           <div class="form-group d-flex flex-column align-items-center">
 
             <!--MAKE INPUT FIELD RED IF NO WORD IS FOUND  -->
@@ -17,6 +17,10 @@
           <!-- WILL ADD LAST SUCESSFUL WORD, SO IF YOU FIND A WORD DONT CLICK ADD, THEN TYPE SOMETHING THAT IS NOT
         A WORD AND CLICK ADD IT WILL ADD THE LAST WORD IT FOUND, IT SHOULD NOT ADD ANYTHING -->
           <a style="cursor: pointer;" (click)="onAddWord()" class="btn btn-success rounded text-white mt-3">Add word to list</a>
+
+          <ul class="mt-5">
+            <li *ngFor="let list of lists"><a class="mt-2" href="#" (click)="onSelectList()">{{ list.name }}</a></li>
+          </ul>
         </div>
 
         <!-- NEED TO FIGURE OUT HOW TO NOT DISPLAY UNTIL THE FIRST WORD IS SEARCHED FOR -->
