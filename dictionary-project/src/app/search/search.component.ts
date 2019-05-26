@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit {
   synonymLength = 0;
   error = 0;
   lists;
+  clicked = false;
 
   constructor(private retrieveData: GetDataService,
               private wordService: WordService,
@@ -101,9 +102,11 @@ export class SearchComponent implements OnInit {
     //   this.wordService.addWord(this.searchResult);
     // }
 
+    this.clicked = true;
+
     // ADDS LISTS TO DOM IN UL FORM
 
-    // NEED TO WORK ON CENTERING 
+    // NEED TO WORK ON CENTERING
     this.lists = this.listService.getLists();
   }
 

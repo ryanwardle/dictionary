@@ -8,5 +8,10 @@ ul li{
   a{
     text-decoration: none;
     cursor: pointer;
+
+    &:hover,
+    &:visited{
+      color: #007bff;
+    }
   }
 }
