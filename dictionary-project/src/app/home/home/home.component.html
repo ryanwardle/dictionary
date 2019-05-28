@@ -23,6 +23,7 @@
           <h3>{{ wordOfTheDay.word }}</h3>
           <p class="font-italic mt-1">{{ wordOfTheDay.partOfSpeech }}</p>
           <p class="lead mt-1">{{ wordOfTheDay.definition }}</p>
+          <p>Content provided by {{ wordOfTheDay.attributionText }}</p>
           <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" (click)="buttonToggle()" data-target="#collapse-btn">Learn {{ buttonToggleText }}</button>
           <div class="collapse" id="collapse-btn">
             <!-- <h5 class="mt-2">Etymology</h5>
@@ -38,6 +39,11 @@
             <p>{{ wordOfTheDay.synonyms }}</p> -->
           </div>
           <hr>
+          <a target="_blank" href="https://www.wordnik.com/words/{{ wordOfTheDay.word }}">
+            <p class="text-primary text-sm-right">
+              View complete Wordnik data
+            </p>
+          </a>
         </div>
       </div>
     </div>

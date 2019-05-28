@@ -22,7 +22,7 @@
 
           <!-- EVENTUALLY MAKE IT SO WHEN YOU CLICK WHICH LIST TO ADD TO, IT ADDS THE WORD AND TAKES YOU TO THE LIST -->
           <ul class=" pl-0 mt-2">
-            <li class=" text-primary" *ngFor="let list of lists"><a class="mt-2" href="#" (click)="onSelectList()">{{ list.name }}</a></li>
+            <li class=" text-primary" *ngFor="let list of lists"><a class="mt-4" (click)="onSelectList($event)">{{ list.name }}</a></li>
           </ul>
         </div>
 

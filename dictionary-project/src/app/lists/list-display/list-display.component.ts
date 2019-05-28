@@ -18,27 +18,13 @@ export class ListDisplayComponent implements OnInit {
   toggle = false;
   @Input() listName;
 
-  constructor(private listService: ListService,
-              private wordService: WordService) { }
-
-// CHANGED LIST MODEL TO INCLUDE NAME OF LIST, STILL TRYING TO FIGURE OUT HOW TO ORGANIZE LISTS,
-// NEED TO FIGURE OUT HOW TO PROERLY GET NAME OF LIST NOW THAT I HAVE MADE CHANGES
+  constructor(private listService: ListService) { }
 
   ngOnInit() {
     this.lists = this.listService.getLists();
     this.listService.listAdded.subscribe((lists: List[]) => {
       this.lists = lists;
     });
-
-    // WILL COME BACK TO THE ADDING WORDS PART BELOW, WILL HAVE TO REDO
-    // this.words = this.list[0].words;
-    // this.wordService.wordAdded.subscribe((words: Word[]) => {
-    //   // ABLE TO ADD WORDS TO LIST BUT ONCE YOU VIEW THE LIST SECTINO AND GO BACK TO SEARCH THE ADDED
-    //   // WORDS ARE NO LONGER BEING ADDED TO THE DOM
-    //   console.log(words);
-    //   this.words = words;
-    //   console.log(this.words);
-    // });
   }
 
 

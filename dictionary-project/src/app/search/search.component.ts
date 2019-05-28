@@ -11,7 +11,7 @@ import { ListService } from '../list.service';
 })
 export class SearchComponent implements OnInit {
   wordData: any;
-  searchResult: Word = new Word ('', '', '', [''], ['']);
+  searchResult: Word = new Word ('', '', '', [''], [''], '');
   submittedWord;
   wordCheck = -1;
   returnedWord;
@@ -26,6 +26,8 @@ export class SearchComponent implements OnInit {
   error = 0;
   lists;
   clicked = false;
+  selectedList;
+  selectedListIndex;
 
   constructor(private retrieveData: GetDataService,
               private wordService: WordService,
@@ -49,6 +51,10 @@ export class SearchComponent implements OnInit {
 // METHOD THAT GETS WORD DATA AND ORGANIZES INTO WORD MODEL
   getWordData(word): any {
     this.returnedWord = this.retrieveData.getData(word).subscribe(data => {
+
+      for (let i = 0; i < data[0].length; i++) {
+        console.log(data[0][i].text);
+      }
       console.log(data);
       this.wordCheck = data[0].length;
       this.error = 1;
@@ -74,7 +80,7 @@ export class SearchComponent implements OnInit {
           this.antonymLength = this.antonyms.length;
         }
       });
-      this.searchResult = new Word (word, this.definition, this.partOfSpeech, this.antonyms, this.synonyms);
+      this.searchResult = new Word (word, this.definition, this.partOfSpeech, this.antonyms, this.synonyms, this.attributionText);
     },
 
   error => this.error = error.status
@@ -91,27 +97,26 @@ export class SearchComponent implements OnInit {
   }
 
 
+  // LOOK AT INFO YOU LOGGED TO CONSOLE, WORDS WERE PUSHING TO CORRECT LIST, NOW
+  // ONLY PUSH LAST WORD TO EVERY LIST, CHECK CODE AND TROUBESHOOT WITH INFO LOGGED TO THE CONSOLE.
 
-
-// ADDS WORD TO WORD LIST
-// NEED TO CHANGE THIS SO ON CLICK, USER CHOOSES WHICH LIST TO ADD WORD TO.
 
   onAddWord() {
-    // console.log(this.wordCheck === undefined);
-    // if (this.wordCheck !== undefined) {
-    //   this.wordService.addWord(this.searchResult);
-    // }
-
     this.clicked = true;
 
     // ADDS LISTS TO DOM IN UL FORM
-
-    // NEED TO WORK ON CENTERING
     this.lists = this.listService.getLists();
   }
 
 // SELECTS LIST THAT WAS CLICKED ON AND ADDS WORD TO LIST
-  onSelectList() {
+  onSelectList(event) {
+    this.selectedList = event.target.firstChild.data;
 
+    for (let i = 0; i < this.lists.length; i++) {
+      if (this.lists[i].name === this.selectedList) {
+        this.listService.addWordToList(i, this.searchResult);
+      }
+    }
+    console.log(this.listService.getLists());
   }
 }

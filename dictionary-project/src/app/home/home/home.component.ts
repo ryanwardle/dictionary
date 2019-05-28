@@ -9,7 +9,7 @@ import { Word } from '../../word.model';
 })
 export class HomeComponent implements OnInit {
 
-  wordOfTheDay: Word = new Word ('', '', '', [''], ['']);
+  wordOfTheDay: Word = new Word ('', '', '', [''], [''], '');
   randomWord;
   toggle = false;
   buttonToggleText = 'More';
@@ -36,10 +36,11 @@ export class HomeComponent implements OnInit {
       const definition = data.definitions[0].text;
       const partOfSpeech = data.definitions[0].partOfSpeech;
       const origin = data.note;
+      const attributionText = data.contentProvider.name;
 
       // NEED TO FIND SYNONYMS
 
-      this.wordOfTheDay = new Word (word, definition, partOfSpeech, origin, ['']);
+      this.wordOfTheDay = new Word (word, definition, partOfSpeech, origin, [''], attributionText);
     });
   }
 
