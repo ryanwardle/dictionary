@@ -11,80 +11,9 @@
 
       <div class="collapse" id="collapse-{{ i }}">
 
-        <app-word-display></app-word-display>
-
-        <!-- MAY HAVE TO PUT WORD DISPLAY HERE AND LOOP THROUGH WORDS FOR DISPLAY? -->
-        <!-- HARD CODED THIS TO SEE WHAT THE DISPLAY WILL LOOOK LIKE -->
-        <!-- <div class="card-body">
-          <h5>Word</h5>
-          <p class="font-italic mt-1">Verb</p>
-          <p class="lead mt-1">This is the definition of the word</p>
-          <p>This is the attribution text</p>
-          <a href="#collapse-btn-{{ i }}" class="btn btn-primary mt-3 mb-3" data-parent="#accordian" data-toggle="collapse">Learn {{ buttonToggleText }}</a>
-          <div class="collapse" id="collapse-btn-{{ i }}">
-            <div>
-              <h5 class="mt-2">Antonyms</h5>
-              <p class="lead">antonym1, antonym5</p>
-            </div>
-            <div>
-              <h5>Synonyms</h5>
-              <p class="lead">synonym7, synonym3</p>
-            </div>
-          </div>
-          <hr>
-          <a target="_blank" href="https://www.wordnik.com/words/">
-            <p class="text-primary text-sm-right">
-              View complete Wordnik data
-            </p>
-          </a>
-        </div> -->
+        <app-word-display [index]="i"></app-word-display>
+        
       </div>
     </div>
   </div>
 </div>
-
-<!-- <div class="row justify-content-center">
-  <div class="col-md-6 offset-1 mt-5 mb-5 d-flex justify-content-center text-center">
-    <div class="card text-center w-100">
-      <div class="card-header lead">
-        Name of List
-      </div>
-      <div class="card-body" *ngFor="let word of words; let i = index">
-        <h3>{{ word.word }}</h3>
-        <p class="font-italic mt-1">{{ word.partOfSpeech }}</p>
-        <p class="lead mt-1">{{ word.definition }}</p>
-        <button class="btn btn-primary mt-3 mb-3"  (click)="buttonToggle()" data-toggle="collapse" attr.data-target="#collapse{{ i }}">View {{ buttonToggleText }}</button>
-        <div class="collapse" id="collapse{{ i }}">
-          <h5 class="mt-2">Antonyms</h5>
-          <p class="lead">{{ word.antonyms }}</p>
-          <h5>Synonyms</h5>
-          <p>{{ word.synonyms }}</p>
-        </div>
-        <hr>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- <div class="row justify-content-center">
-  <div class="col-md-6 offset-1 mt-5 mb-5 d-flex justify-content-center text-center">
-    <div class="card text-center w-100">
-      <div class="card-header lead">
-        Name of List
-      </div>
-      <div class="card-body" *ngFor="let word of words; let i = index">
-        <h3>{{ word.word }}</h3>
-        <p class="font-italic mt-1">{{ word.partOfSpeech }}</p>
-        <p class="lead mt-1">{{ word.definition }}</p>
-        <button class="btn btn-primary mt-3 mb-3"  (click)="buttonToggle()" data-toggle="collapse" attr.data-target="#collapse{{ i }}">View {{ buttonToggleText }}</button>
-        <div class="collapse" id="collapse{{ i }}">
-          <h5 class="mt-2">Etymology</h5>
-          <p class="lead">{{ word.origin}}</p>
-          <h5>Synonyms</h5>
-          <p>{{ word.synonyms }}</p>
-        </div>
-        <hr>
-      </div>
-    </div>
-  </div>
-</div> -->

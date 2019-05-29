@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../../get-data.service';
-import { Word } from '../../word.model';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +8,7 @@ import { Word } from '../../word.model';
 })
 export class HomeComponent implements OnInit {
 
-  wordOfTheDay: Word = new Word ('', '', '', [''], [''], '');
+  wordOfTheDay: {};
   randomWord;
   toggle = false;
   buttonToggleText = 'More';
@@ -19,28 +18,34 @@ export class HomeComponent implements OnInit {
   // WORK ON WORD OF THE DAY AND THEN GETTING A RANDOM WORD, FIGURE OUT IF BETTER
   // ON HOME OR ON SEARCH PAGE, IF ON HOME, WILL NEED TO TOGGLE TEXT BETWEEN RANDOM AND WORD OF THE DAY
 
-  test() {
-    this.getData.getRandomWord()
-    .subscribe((data: any) => {
-      console.log(data);
-    });
+  onSelectList() {
+
   }
 
   ngOnInit() {
 
     this.getData.getWordOfDay().subscribe((data: any) => {
-      // NEED TO FIGURE OUT HOW TO GET ATTRIBUTION TEXT IN WORD OF DAY, TRY TO DO WITHOUT CALLING,
-      // ANY NEW SERVICES, MAY NEED TO JUST GET WORD OF DAY AND THEN RUN THAT THROUGH THE SEARCH WORD SERVICES
       console.log(data);
       const word = data.word;
       const definition = data.definitions[0].text;
       const partOfSpeech = data.definitions[0].partOfSpeech;
-      const origin = data.note;
+      const note = data.note;
+      const example = data.examples[0].text;
       const attributionText = data.contentProvider.name;
+      const exampleAttribution = data.examples[0].title;
 
-      // NEED TO FIND SYNONYMS
 
-      this.wordOfTheDay = new Word (word, definition, partOfSpeech, origin, [''], attributionText);
+      // this.wordOfTheDay = new Word (word, definition, partOfSpeech, origin, [''], attributionText);
+
+      this.wordOfTheDay = {
+        word: word,
+        definition: definition,
+        partOfSpeech: partOfSpeech,
+        note: note,
+        example: example,
+        exampleAttribution: exampleAttribution,
+        attributionText: attributionText
+      };
     });
   }
 

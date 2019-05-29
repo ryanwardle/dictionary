@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ListService } from '../list.service';
-// import { List } from '../list.model';
 
 @Component({
   selector: 'app-lists',

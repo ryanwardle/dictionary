@@ -1,0 +1,15 @@
+.card-body{
+
+  a{
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover,
+     :link,
+     :active,
+     :visited{
+      color: #007bff;
+      text-decoration: none;
+    }
+  }
+}

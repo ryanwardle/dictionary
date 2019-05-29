@@ -7,49 +7,34 @@
       </div>
     </div>
     <div class="row">
-      <!-- <div class="mt-5 col-12 mx-auto d-flex justify-content-center">
-        <span>
-          <h3 class="d-inline-block">{{ wordOftheDay.word }}:</h3>
-          <p class="d-inline-block lead"> {{ wordOftheDay.definition }}</p>
-        </span>
-      </div>
-
-      <div class="mt-3 col-12 mx-auto d-flex justify-content-center">
-        <p class="d-block">{{ wordOftheDay.word }} is an {{ wordOftheDay.partOfSpeech}}. {{ wordOftheDay.partOfSpeech }} is a word or phrase naming an attribute.</p>
-      </div> -->
-    <div class="col-12">
-      <div class="card text-center w-100 mt-5 mb-1">
-        <div class="card-body">
-          <h3>{{ wordOfTheDay.word }}</h3>
-          <p class="font-italic mt-1">{{ wordOfTheDay.partOfSpeech }}</p>
-          <p class="lead mt-1">{{ wordOfTheDay.definition }}</p>
-          <p>Content provided by {{ wordOfTheDay.attributionText }}</p>
-          <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" (click)="buttonToggle()" data-target="#collapse-btn">Learn {{ buttonToggleText }}</button>
-          <div class="collapse" id="collapse-btn">
-            <!-- <h5 class="mt-2">Etymology</h5>
-            <p class="lead">{{ wordOfTheDay.origin }}</p>
-            IF I STICK TO THIS, I NEED TO CHANGE THE NAME FROM ORIGIN IN WORD MODEL
-            IF THE NOTE THEY GIVE IS NOT ALWAYS ABOUT ETYMOLOGY, OR IF I CANT FIND
-            CONSISTENT ETYMOLOGY DATA
-
-            ALSO NEED TO FIND SYNONYMS
-          -->
-            <p class="lead">{{ wordOfTheDay.antonyms }}</p>
-            <!-- <h5>Synonyms</h5>
-            <p>{{ wordOfTheDay.synonyms }}</p> -->
+      <div class="col-12">
+        <div class="card text-center w-100 mt-5 mb-1">
+          <div class="card-body">
+            <h3>{{ wordOfTheDay.word }}</h3>
+            <p class="font-italic mt-1">{{ wordOfTheDay.partOfSpeech }}</p>
+            <p class="lead mt-1" [innerHTML]="wordOfTheDay.definition"></p>
+            <p>Content provided by {{ wordOfTheDay.attributionText }}</p>
+            <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" (click)="buttonToggle()" data-target="#collapse-btn">Learn {{ buttonToggleText }}</button>
+            <div class="collapse" id="collapse-btn">
+              <p class="lead">{{ wordOfTheDay.note }}</p>
+              <h5>Example Usage</h5>
+              <div>
+                <p class="lead">{{ wordOfTheDay.example }}</p>
+                From <cite>{{ wordOfTheDay.exampleAttribution}}</cite>
+              </div>
+            </div>
+            <a target="_blank" href="https://www.wordnik.com/words/{{ wordOfTheDay.word }}">
+              <p class="text-primary text-sm-right">
+                View complete Wordnik data
+              </p>
+            </a>
+            <hr class="bg-primary">
           </div>
-          <hr>
-          <a target="_blank" href="https://www.wordnik.com/words/{{ wordOfTheDay.word }}">
-            <p class="text-primary text-sm-right">
-              View complete Wordnik data
-            </p>
-          </a>
         </div>
       </div>
-    </div>
 
       <div class="col-12 text-center">
-        <button (click)="test()" class="btn btn-primary rounded mt-5 mb-5">Add to a vocabulary list</button>
+        <button (click)="onSelectList()" class="btn btn-primary rounded mt-5 mb-5">Add to a vocabulary list</button>
       </div>
     </div>
   </div>

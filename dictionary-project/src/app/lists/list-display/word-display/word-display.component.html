@@ -1,9 +1,7 @@
 <div class="card-body" *ngFor="let word of words">
-  <!-- MAY HAVE TO PUT WORD DISPLAY HERE AND LOOP THROUGH WORDS FOR DISPLAY? -->
-  <!-- HARD CODED THIS TO SEE WHAT THE DISPLAY WILL LOOOK LIKE -->
   <h5>{{ word.word }}</h5>
   <p class="font-italic mt-1">{{ word.partOfSpeech }}</p>
-  <p class="lead mt-1">{{ word.definition }}</p>
+  <p class="lead mt-1" [innerHTML]="word.definition"></p>
   <p>{{ word.attributionText }}</p>
   <a href="#collapse-btn-{{ i }}" class="btn btn-primary mt-3 mb-3" data-parent="#accordian" data-toggle="collapse">Learn {{ buttonToggleText }}</a>
   <div class="collapse" id="collapse-btn-{{ i }}">
@@ -16,10 +14,10 @@
       <p class="lead">{{ word.synonyms }}</p>
     </div>
   </div>
-  <hr>
   <a target="_blank" href="https://www.wordnik.com/{{word}}/">
     <p class="text-primary text-sm-right">
       View complete Wordnik data
     </p>
   </a>
+  <hr class="bg-primary">
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ListService } from '../../../list.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { ListService } from '../../../list.service';
   styleUrls: ['./word-display.component.scss']
 })
 export class WordDisplayComponent implements OnInit {
-
+  @Input() index;
   words: [];
   lists;
   constructor(private listService: ListService) { }
@@ -15,11 +15,7 @@ export class WordDisplayComponent implements OnInit {
   ngOnInit() {
 
     this.lists = this.listService.getLists();
-
-    this.lists.forEach(list => {
-      this.words = list.words;
-    });
-    console.log(this.words);
+    this.words = this.lists[this.index].words;
   }
 
 }

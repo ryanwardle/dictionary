@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../get-data.service';
 import { Word } from '../word.model';
-import { WordService } from '../word.service';
 import { ListService } from '../list.service';
 
 @Component({
@@ -30,7 +29,6 @@ export class SearchComponent implements OnInit {
   selectedListIndex;
 
   constructor(private retrieveData: GetDataService,
-              private wordService: WordService,
               private listService: ListService) { }
 
   ngOnInit() {
@@ -52,20 +50,24 @@ export class SearchComponent implements OnInit {
   getWordData(word): any {
     this.returnedWord = this.retrieveData.getData(word).subscribe(data => {
 
-      for (let i = 0; i < data[0].length; i++) {
-        console.log(data[0][i].text);
-      }
       console.log(data);
       this.wordCheck = data[0].length;
       this.error = 1;
 
-      // SOME WORDS I MAY NEED TO GO TO DATA[0][1], NEED TO CREATE A CHECK FOR WHICH ONE
-      // TO GET THE DATA FROM
-      // EXAMPLES OF WORDS THAT DONT SHOW DFINITION: BAD AND MOUSE
+      for (let i = 0; i < data[0].length; i++) {
+        console.log(data[0][i].exampleUses);
+      }
 
-      this.attributionText = data[0][0].attributionText;
-      this.definition =  data[0][0].text;
-      this.partOfSpeech = data[0][0].partOfSpeech;
+    // FINDS FIRST RETURNED OBJECT THAT RETURNS DEFINITION
+      for (let i = 0; i < data[0].length; i++) {
+        if (data[0][i].hasOwnProperty('text')) {
+          this.attributionText = data[0][i].attributionText;
+          this.definition =  data[0][i].text;
+          this.partOfSpeech = data[0][i].partOfSpeech;
+          break;
+        }
+      }
+
 
       const relatedWordsArray = data[1];
 
@@ -96,17 +98,12 @@ export class SearchComponent implements OnInit {
     });
   }
 
-
-  // LOOK AT INFO YOU LOGGED TO CONSOLE, WORDS WERE PUSHING TO CORRECT LIST, NOW
-  // ONLY PUSH LAST WORD TO EVERY LIST, CHECK CODE AND TROUBESHOOT WITH INFO LOGGED TO THE CONSOLE.
-
-
   onAddWord() {
     this.clicked = true;
-
     // ADDS LISTS TO DOM IN UL FORM
     this.lists = this.listService.getLists();
   }
+
 
 // SELECTS LIST THAT WAS CLICKED ON AND ADDS WORD TO LIST
   onSelectList(event) {
@@ -117,6 +114,5 @@ export class SearchComponent implements OnInit {
         this.listService.addWordToList(i, this.searchResult);
       }
     }
-    console.log(this.listService.getLists());
   }
 }

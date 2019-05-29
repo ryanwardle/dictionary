@@ -1,10 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-// MAY BE ABLE TO DELETE ENTORE LIST MODEL
 import { List } from '../../list.model';
 import { Word } from '../../word.model';
 import { ListService } from '../../list.service';
-import { WordService } from '../../word.service';
 
 @Component({
   selector: 'app-list-display',

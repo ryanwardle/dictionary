@@ -9,7 +9,7 @@
       <div class="card-body">
         <h3>{{ searchResult.word }}</h3>
         <p class="font-italic mt-1">{{ searchResult.partOfSpeech }}</p>
-        <p class="lead mt-1">{{ searchResult.definition }}</p>
+        <p class="lead mt-1" [innerHTML]="searchResult.definition"></p>
         <p>{{ attributionText }}</p>
         <button class="btn btn-primary mt-3 mb-3" data-toggle="collapse" (click)="buttonToggle()" data-target="#collapse-btn">Learn {{ buttonToggleText }}</button>
         <div class="collapse" id="collapse-btn">
@@ -22,12 +22,12 @@
             <p class="lead">{{ searchResult.synonyms }}</p>
           </div>
         </div>
-        <hr>
         <a target="_blank" href="https://www.wordnik.com/words/{{ searchResult.word }}">
           <p class="text-primary text-sm-right">
             View complete Wordnik data
           </p>
         </a>
+        <hr class="bg-primary">
       </div>
     </div>
   </ng-container>

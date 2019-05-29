@@ -1,7 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { List } from './list.model';
 import { Word } from './word.model';
-import { WordService } from './word.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +8,7 @@ import { WordService } from './word.service';
 export class ListService {
   listAdded = new EventEmitter<List[]>();
 
-  constructor(private words: WordService) { }
+  constructor() { }
 
   private lists: List[] = [];
 
