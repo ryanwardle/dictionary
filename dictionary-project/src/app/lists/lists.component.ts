@@ -18,8 +18,6 @@ export class ListsComponent implements OnInit {
   }
 
   onCreateNewList(event) {
-    // 3 WILL NEED TO REWRITE THE CODE FOR HOW THE LISTS ARE DISPLAYED
-    // 4 WILL PROBABLY HAVE TO STILL USE SERVICE TO ADD WORDS TO THE LISTS
 
     if (event.key === 'Enter') {
       this.listName = event.target.value;

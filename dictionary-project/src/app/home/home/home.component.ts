@@ -15,9 +15,6 @@ export class HomeComponent implements OnInit {
 
   constructor(private getData: GetDataService) { }
 
-  // WORK ON WORD OF THE DAY AND THEN GETTING A RANDOM WORD, FIGURE OUT IF BETTER
-  // ON HOME OR ON SEARCH PAGE, IF ON HOME, WILL NEED TO TOGGLE TEXT BETWEEN RANDOM AND WORD OF THE DAY
-
   onSelectList() {
 
   }

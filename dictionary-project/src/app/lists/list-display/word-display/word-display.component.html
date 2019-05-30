@@ -1,9 +1,9 @@
-<div class="card-body" *ngFor="let word of words">
+<div class="card-body" *ngFor="let word of words; let i = index">
   <h5>{{ word.word }}</h5>
   <p class="font-italic mt-1">{{ word.partOfSpeech }}</p>
   <p class="lead mt-1" [innerHTML]="word.definition"></p>
   <p>{{ word.attributionText }}</p>
-  <a href="#collapse-btn-{{ i }}" class="btn btn-primary mt-3 mb-3" data-parent="#accordian" data-toggle="collapse">Learn {{ buttonToggleText }}</a>
+  <a href="#collapse-btn-{{ i }}" class="btn btn-primary mt-3 mb-3" (click)="findButtonId($event)" data-parent="#accordian" data-toggle="collapse">Learn {{ buttonToggleText }}</a>
   <div class="collapse" id="collapse-btn-{{ i }}">
     <div>
       <h5 class="mt-2">Antonyms</h5>

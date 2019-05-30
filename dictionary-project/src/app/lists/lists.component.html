@@ -2,7 +2,6 @@
   <div class="container">
     <div class="row">
       <div class="col mt-5 d-flex flex-column align-items-center align-self-center">
-        <!-- <a class="btn btn-success rounded text-white" (click)="onCreateNewList()">Create new list</a> -->
         <div class="col-6 d-flex justify-content-around">
           <a class="btn btn-primary rounded text-white" (click)="onEditList()">Edit list</a>
           <a class="btn btn-danger rounded text-white" (click)="onDeleteList()">Delete list</a>
@@ -15,14 +14,8 @@
       </div>
     </div>
 
-    <!-- GOING TO NEED TO FIGURE OUT HOW TO DISPLAY LISTS, THEN WORDS WITHIN EACH LIST -->
-    <!-- <app-list-display *ngFor="let word of words" *ngFor="list of lists"></app-list-display> -->
-  <!-- *ngFor="let word of words" -->
-
     <app-list-display *ngFor="let list of lists"></app-list-display>
 
     <router-outlet></router-outlet>
   </div>
 </section>
-
-<!-- NEED TO FINISH FIGUING OUT THE LOOP AND ADDING/ DISPLAYNG LISTS AND WORDS -->

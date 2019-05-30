@@ -54,9 +54,9 @@ export class SearchComponent implements OnInit {
       this.wordCheck = data[0].length;
       this.error = 1;
 
-      for (let i = 0; i < data[0].length; i++) {
-        console.log(data[0][i].exampleUses);
-      }
+      // for (let i = 0; i < data[0].length; i++) {
+      //   console.log(data[0][i].exampleUses);
+      // }
 
     // FINDS FIRST RETURNED OBJECT THAT RETURNS DEFINITION
       for (let i = 0; i < data[0].length; i++) {

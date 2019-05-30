@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col" id="accordian">
-    <div class="card text-center mt-4" *ngFor="let list of lists; let i = index">
+    <div class="card text-center mt-4 mb-4" *ngFor="let list of lists; let i = index">
       <div class="card-header lead">
         <h4>
           <a href="#collapse-{{ i }}" data-parent="#accordian" data-toggle="collapse">
@@ -12,7 +12,7 @@
       <div class="collapse" id="collapse-{{ i }}">
 
         <app-word-display [index]="i"></app-word-display>
-        
+
       </div>
     </div>
   </div>

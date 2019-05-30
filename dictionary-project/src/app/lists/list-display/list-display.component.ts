@@ -11,8 +11,6 @@ import { ListService } from '../../list.service';
 export class ListDisplayComponent implements OnInit {
   words: Word[];
   lists: List[];
-  buttonToggleText = 'More';
-  toggle = false;
   @Input() listName;
 
   constructor(private listService: ListService) { }
@@ -22,17 +20,5 @@ export class ListDisplayComponent implements OnInit {
     this.listService.listAdded.subscribe((lists: List[]) => {
       this.lists = lists;
     });
-  }
-
-
-// CONSOLIDATE SEARCH, LISTS AND HOME. USE SERVICE? ALSO MAY NEED TO EDIT HTML WHEN I CHANGE
-  buttonToggle() {
-    if (this.toggle) {
-      this.buttonToggleText = 'More';
-      this.toggle = !this.toggle;
-    } else {
-      this.buttonToggleText = 'Less';
-      this.toggle = !this.toggle;
-    }
   }
 }
