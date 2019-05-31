@@ -3,6 +3,17 @@
   <p class="font-italic mt-1">{{ word.partOfSpeech }}</p>
   <p class="lead mt-1" [innerHTML]="word.definition"></p>
   <p>{{ word.attributionText }}</p>
+
+
+<!-- THIS WORKS SAME AS <A> BELOW IT, STILL TRYING TO FIGURE OUT HOW TO ONLY CHANGE SINGLE BUTTON TEXT -->
+  <!-- <div *ngIf="buttonToggleText === 'More' else learnLess">
+     <a class="btn btn-primary mt-3 mb-3" data-parent="#accordian" data-toggle="collapse" (click)="buttonToggle()" href="#collapse-btn-{{ i }}">Learn More</a>
+   </div>
+
+  <ng-template #learnLess>
+    <a class="btn btn-primary mt-3 mb-3" data-parent="#accordian" data-toggle="collapse" (click)="buttonToggle()" href="#collapse-btn-{{ i }}">Learn Less</a>
+  </ng-template> -->
+
   <a href="#collapse-btn-{{ i }}" class="btn btn-primary mt-3 mb-3" (click)="findButtonId($event)" data-parent="#accordian" data-toggle="collapse">Learn {{ buttonToggleText }}</a>
   <div class="collapse" id="collapse-btn-{{ i }}">
     <div>
