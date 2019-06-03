@@ -6,7 +6,7 @@ import { Word } from './word.model';
   providedIn: 'root'
 })
 export class ListService {
-  listAdded = new EventEmitter<List[]>();
+  listChanged = new EventEmitter<List[]>();
 
   constructor() { }
 
@@ -14,11 +14,15 @@ export class ListService {
 
   addNewList(newList: string) {
     this.lists.push(new List(newList, []));
-    this.listAdded.emit(this.lists.slice());
+    this.listChanged.emit(this.lists.slice());
   }
 
   addWordToList(index: number, word: Word) {
     this.lists[index].words.push(word);
+  }
+
+  deleteList(index) {
+    this.lists.splice(index, 1);
   }
 
   getLists() {

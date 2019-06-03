@@ -30,9 +30,4 @@ export class ListsComponent implements OnInit {
   onEditList() {
     this.router.navigate(['edit'], {relativeTo: this.route});
   }
-
-  onDeleteList() {
-    this.router.navigate(['delete'], {relativeTo: this.route});
-  }
-
 }

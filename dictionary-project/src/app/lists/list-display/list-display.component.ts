@@ -17,8 +17,14 @@ export class ListDisplayComponent implements OnInit {
 
   ngOnInit() {
     this.lists = this.listService.getLists();
-    this.listService.listAdded.subscribe((lists: List[]) => {
+    this.listService.listChanged.subscribe((lists: List[]) => {
       this.lists = lists;
     });
+  }
+
+  onDeleteList(index) {
+    this.listService.deleteList(index);
+    this.lists = this.listService.getLists();
+      console.log(this.lists);
   }
 }

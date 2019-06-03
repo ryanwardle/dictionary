@@ -8,7 +8,7 @@ import { GetDataService } from '../../get-data.service';
 })
 export class HomeComponent implements OnInit {
 
-  wordOfTheDay: {};
+  wordOfTheDay: {} = {};
   randomWord;
   toggle = false;
   buttonToggleText = 'More';
@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.getData.getWordOfDay().subscribe((data: any) => {
-      console.log(data);
       const word = data.word;
       const definition = data.definitions[0].text;
       const partOfSpeech = data.definitions[0].partOfSpeech;
@@ -30,9 +29,6 @@ export class HomeComponent implements OnInit {
       const example = data.examples[0].text;
       const attributionText = data.contentProvider.name;
       const exampleAttribution = data.examples[0].title;
-
-
-      // this.wordOfTheDay = new Word (word, definition, partOfSpeech, origin, [''], attributionText);
 
       this.wordOfTheDay = {
         word: word,

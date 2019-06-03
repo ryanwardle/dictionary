@@ -11,9 +11,7 @@ import { SearchComponent } from './search/search.component';
 import { ListsComponent } from './lists/lists.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ListDisplayComponent } from './lists/list-display/list-display.component';
-import { NewListComponent } from './lists/new-list/new-list.component';
 import { EditListComponent } from './lists/edit-list/edit-list.component';
-import { DeleteListComponent } from './lists/delete-list/delete-list.component';
 import { SearchResultComponent } from './search/search-result/search-result.component';
 import { WordDisplayComponent } from './lists/list-display/word-display/word-display.component';
 
@@ -32,9 +30,7 @@ const appRoutes: Routes = [
     SearchComponent,
     ListsComponent,
     ListDisplayComponent,
-    NewListComponent,
     EditListComponent,
-    DeleteListComponent,
     SearchResultComponent,
     WordDisplayComponent,
   ],
