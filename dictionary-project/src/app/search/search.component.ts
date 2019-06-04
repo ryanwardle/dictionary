@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../get-data.service';
 import { Word } from '../word.model';
 import { ListService } from '../list.service';
+// import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -27,6 +28,7 @@ export class SearchComponent implements OnInit {
   clicked = false;
   selectedList;
   selectedListIndex;
+  test;
 
   constructor(private retrieveData: GetDataService,
               private listService: ListService) { }
@@ -41,8 +43,17 @@ export class SearchComponent implements OnInit {
     } else {
       this.submittedWord = event.target.previousSibling.value.toLowerCase();
     }
-
     this.getWordData(this.submittedWord);
+    // this.test = this.retrieveData.getWordData(this.submittedWord).pipe(map(data => {
+    //   console.log(data);
+    // }));
+    // console.log(this.test);
+
+    // console.log(this.retrieveData.getWordData(this.submittedWord));
+
+    // this.retrieveData.getWordData(this.submittedWord).subscribe(data => {
+    //   console.log(data);
+    // });
   }
 
 
