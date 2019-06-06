@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
+// import { map } from 'rxjs/operators';
 // import { Word } from './word.model';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class GetDataService {
 
   // searchResult: Word = new Word ('', '', '', [''], [''], '');
   // wordCheck = -1;
-  // returnedWord;
+  // returnedWord: Observable<any>;
   // attributionText;
   // word;
   // definition;
@@ -48,49 +49,44 @@ getWordOfDay() {
   }
 
   // METHOD THAT GETS WORD DATA AND ORGANIZES INTO WORD MODEL
-    // getWordData(word): Observable<Word> {
-    //   this.returnedWord = this.getData(word).subscribe(data => {
-    //
-    //     console.log(data);
-    //     this.wordCheck = data[0].length;
-    //     this.error = 1;
-
-        // for (let i = 0; i < data[0].length; i++) {
-        //   console.log(data[0][i].exampleUses);
-        // }
-
-      // FINDS FIRST RETURNED OBJECT THAT RETURNS DEFINITION
-    //     for (let i = 0; i < data[0].length; i++) {
-    //       if (data[0][i].hasOwnProperty('text')) {
-    //         this.attributionText = data[0][i].attributionText;
-    //         this.definition =  data[0][i].text;
-    //         this.partOfSpeech = data[0][i].partOfSpeech;
-    //         break;
-    //       }
-    //     }
-    //
-    //
-    //     const relatedWordsArray = data[1];
-    //
-    //     relatedWordsArray.map(obj => {
-    //       if (obj.relationshipType === 'synonym') {
-    //         this.synonyms = obj.words.join(', ');
-    //         this.synonymLength = this.synonyms.length;
-    //       }
-    //
-    //       if (obj.relationshipType === 'antonym') {
-    //         this.antonyms = obj.words.join(', ');
-    //         this.antonymLength = this.antonyms.length;
-    //       }
-    //     });
-    //     this.searchResult = new Word (word, this.definition, this.partOfSpeech, this.antonyms, this.synonyms, this.attributionText);
-    //     console.log(this.searchResult);
-    //     return this.searchResult;
-    //   },
-    //
-    // error => this.error = error.status
-    //   );
-    //   return this.returnedWord;
-    // }
-
+  // getWordData(word): Observable<any> {
+  //     this.returnedWord = this.getData(word).pipe(map(data => {
+  //
+  //       this.wordCheck = data[0].length;
+  //       this.error = 1;
+  //
+  //     // FINDS FIRST RETURNED OBJECT THAT RETURNS DEFINITION
+  //       for (let i = 0; i < data[0].length; i++) {
+  //         if (data[0][i].hasOwnProperty('text')) {
+  //           this.attributionText = data[0][i].attributionText;
+  //           this.definition =  data[0][i].text;
+  //           this.partOfSpeech = data[0][i].partOfSpeech;
+  //           break;
+  //         }
+  //       }
+  //
+  //
+  //       const relatedWordsArray = data[1];
+  //
+  //       relatedWordsArray.map(obj => {
+  //         if (obj.relationshipType === 'synonym') {
+  //           this.synonyms = obj.words.join(', ');
+  //           this.synonymLength = this.synonyms.length;
+  //         }
+  //
+  //         if (obj.relationshipType === 'antonym') {
+  //           this.antonyms = obj.words.join(', ');
+  //           this.antonymLength = this.antonyms.length;
+  //         }
+  //       });
+  //       this.searchResult = new Word (word, this.definition, this.partOfSpeech, this.antonyms, this.synonyms, this.attributionText);
+  //
+  //       return this.searchResult;
+  //     },
+  //
+  //   error => this.error = error.status
+  // ));
+  //
+  //     return this.returnedWord;
+  //   }
 }

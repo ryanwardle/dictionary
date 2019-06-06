@@ -11,7 +11,8 @@ import { ListService } from '../list.service';
 })
 export class SearchComponent implements OnInit {
   wordData: any;
-  searchResult: Word = new Word ('', '', '', [''], [''], '');
+  searchResult = new Word ('', '', '', [''], [''], '');
+  test;
   submittedWord;
   wordCheck = -1;
   returnedWord;
@@ -28,7 +29,7 @@ export class SearchComponent implements OnInit {
   clicked = false;
   selectedList;
   selectedListIndex;
-  test;
+
 
   constructor(private retrieveData: GetDataService,
               private listService: ListService) { }
@@ -38,21 +39,19 @@ export class SearchComponent implements OnInit {
 
   // GETTING VALUE OF SUBMITTED WORD FROM EITHER ENTER OR CLICK EVENT, THEN CALLING GETWORDDATA();
   onSearchWord(event: any) {
+
     if (event.key === 'Enter') {
       this.submittedWord = event.target.value.toLowerCase();
     } else {
       this.submittedWord = event.target.previousSibling.value.toLowerCase();
     }
+
     this.getWordData(this.submittedWord);
-    // this.test = this.retrieveData.getWordData(this.submittedWord).pipe(map(data => {
-    //   console.log(data);
-    // }));
-    // console.log(this.test);
-
-    // console.log(this.retrieveData.getWordData(this.submittedWord));
-
+// WORD IS IN DATA, BUT CANT ASSIGN IT TO SEARCH RESULT
     // this.retrieveData.getWordData(this.submittedWord).subscribe(data => {
-    //   console.log(data);
+    //     this.searchResult = data;
+    //     console.log(this.searchResult);
+    //     return this.searchResult;
     // });
   }
 
@@ -100,12 +99,14 @@ export class SearchComponent implements OnInit {
     );
   }
 
+
+
 // GETS A RANDOM WORD, THEN CALLS GETWORDDATA();
   onRandomWord() {
     let wordObject;
     wordObject = this.retrieveData.getRandomWord();
     wordObject.subscribe(data => {
-      this.getWordData(data.word);
+      this.retrieveData.getData(data.word);
     });
   }
 
