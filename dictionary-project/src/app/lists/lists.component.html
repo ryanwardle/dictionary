@@ -10,7 +10,10 @@
           <input class="form-control w-75" type="text" placeholder="Enter name of new list" (keyup.enter)="onCreateNewList($event)">
           <a class="btn btn-success rounded text-white" style="cursor: pointer;" (click)="onCreateNewList($event)">Create new list</a>
         </div>
+
+        <p class="mt-5" *ngIf="!uniqueList"><em>{{ listName }}</em> is already used as the name of a list. Please choose a different name.</p>
       </div>
+
     </div>
 
     <app-list-display *ngFor="let list of lists"></app-list-display>

@@ -9,6 +9,8 @@ import { ListService } from '../list.service';
 })
 export class ListsComponent implements OnInit {
   listName: string;
+  uniqueList = true;
+  currentLists;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -18,14 +20,28 @@ export class ListsComponent implements OnInit {
   }
 
   onCreateNewList(event) {
-
+    this.uniqueList = true;
     if (event.key === 'Enter') {
       this.listName = event.target.value;
     } else {
       this.listName = event.target.previousSibling.value;
     }
-    this.listService.addNewList(this.listName);
+
+// CHECKS FOR DUPLICATE LIST NAME
+    this.currentLists = this.listService.getLists();
+
+    this.currentLists.map(e => {
+      if (e.name.toLowerCase() === this.listName.toLowerCase()) {
+        this.uniqueList = false;
+      }
+    });
+
+// ADDS LIST ONLY IF NAME IS UNIQUE
+    if (this.uniqueList) {
+      this.listService.addNewList(this.listName);
+    }
   }
+
 
   onEditList() {
     this.router.navigate(['edit'], {relativeTo: this.route});

@@ -106,7 +106,7 @@ export class SearchComponent implements OnInit {
     let wordObject;
     wordObject = this.retrieveData.getRandomWord();
     wordObject.subscribe(data => {
-      this.retrieveData.getData(data.word);
+      this.getWordData(data.word);
     });
   }
 
@@ -126,5 +126,10 @@ export class SearchComponent implements OnInit {
         this.listService.addWordToList(i, this.searchResult);
       }
     }
+
+
+    // POSSIBLY ONLY A TEMPORARY FIX, LOOKS GOOD FOR NOW
+    this.clicked = false;
+    this.lists = [];
   }
 }
