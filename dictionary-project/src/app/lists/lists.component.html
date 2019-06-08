@@ -11,7 +11,7 @@
           <a class="btn btn-success rounded text-white" style="cursor: pointer;" (click)="onCreateNewList($event)">Create new list</a>
         </div>
 
-        <p class="mt-5" *ngIf="!uniqueList"><em>{{ listName }}</em> is already used as the name of a list. Please choose a different name.</p>
+        <p class="mt-5" *ngIf="!uniqueList"><strong>{{ listName }}</strong> is already used as the name of a list. Please choose a different name.</p>
       </div>
 
     </div>

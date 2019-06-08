@@ -27,6 +27,9 @@ export class SearchComponent implements OnInit {
   error = 0;
   lists;
   clicked = false;
+  added = false;
+  listName;
+  uniqueWord = true;
   selectedList;
   selectedListIndex;
 
@@ -39,6 +42,10 @@ export class SearchComponent implements OnInit {
 
   // GETTING VALUE OF SUBMITTED WORD FROM EITHER ENTER OR CLICK EVENT, THEN CALLING GETWORDDATA();
   onSearchWord(event: any) {
+
+    // THIS HIDES THE TEXT THAT TELLS THE LAST WORD ADDED ONCE YOU SEARCH FOR A NEW WORD.
+    this.added = false;
+    this.clicked = false;
 
     if (event.key === 'Enter') {
       this.submittedWord = event.target.value.toLowerCase();
@@ -63,10 +70,6 @@ export class SearchComponent implements OnInit {
       console.log(data);
       this.wordCheck = data[0].length;
       this.error = 1;
-
-      // for (let i = 0; i < data[0].length; i++) {
-      //   console.log(data[0][i].exampleUses);
-      // }
 
     // FINDS FIRST RETURNED OBJECT THAT RETURNS DEFINITION
       for (let i = 0; i < data[0].length; i++) {
@@ -103,10 +106,15 @@ export class SearchComponent implements OnInit {
 
 // GETS A RANDOM WORD, THEN CALLS GETWORDDATA();
   onRandomWord() {
+    // THIS HIDES THE TEXT THAT TELLS THE LAST WORD ADDED ONCE YOU SEARCH FOR A NEW WORD.
+    this.added = false;
+    this.clicked = false;
+
     let wordObject;
     wordObject = this.retrieveData.getRandomWord();
     wordObject.subscribe(data => {
-      this.getWordData(data.word);
+      this.submittedWord = data.word;
+      this.getWordData(this.submittedWord);
     });
   }
 
@@ -120,16 +128,28 @@ export class SearchComponent implements OnInit {
 // SELECTS LIST THAT WAS CLICKED ON AND ADDS WORD TO LIST
   onSelectList(event) {
     this.selectedList = event.target.firstChild.data;
-
     for (let i = 0; i < this.lists.length; i++) {
       if (this.lists[i].name === this.selectedList) {
-        this.listService.addWordToList(i, this.searchResult);
+
+// CHECK FOR DUPLICATE WORD
+        const words = this.lists[i].words;
+        words.map(e => {
+          if (e.word === this.searchResult.word) {
+            this.uniqueWord = false;
+          }
+        });
+
+// IF WORD IS NOT DUPLICATE, PUSH TO LIST
+        if (this.uniqueWord) {
+          this.listName = this.lists[i].name;
+          this.listService.addWordToList(i, this.searchResult);
+        }
+        break;
       }
     }
 
-
-    // POSSIBLY ONLY A TEMPORARY FIX, LOOKS GOOD FOR NOW
     this.clicked = false;
+    this.added = true;
     this.lists = [];
   }
 }

@@ -18,12 +18,20 @@
         A WORD AND CLICK ADD IT WILL ADD THE LAST WORD IT FOUND, IT SHOULD NOT ADD ANYTHING -->
           <a style="cursor: pointer;" (click)="onAddWord()" class="btn btn-success rounded text-white mt-3">Add word to list</a>
 
-          <p class="mt-5" *ngIf="clicked">Please select which list you would like  to add the word <em>{{ searchResult.word }}</em> to.</p>
+          <p class="mt-5" *ngIf="clicked && !added">Please select which list you would like to add the word <em>{{ searchResult.word }}</em> to.</p>
+
+          <p class="mt-5" *ngIf="added && uniqueWord">The word <em>{{ searchResult.word }}</em> has been added to the <strong>{{ this.listName }}</strong> list.</p>
+
+          <p class="mt-5" *ngIf="!uniqueWord">The word <em>{{ searchResult.word }}</em> has already been added to the <strong>{{ this.listName }}</strong> list.</p>
+
+<!-- STILL SOME ERRORS WHEN YOU TRY TO ADD A WORD THAT IS NOT REAL AND THEN CLICK AROUND ON ADD WORD -->
 
           <!-- EVENTUALLY MAKE IT SO WHEN YOU CLICK WHICH LIST TO ADD TO, IT ADDS THE WORD AND TAKES YOU TO THE LIST -->
-          <ul class=" pl-0 mt-2">
-            <li class=" text-primary" *ngFor="let list of lists"><a class="mt-4" (click)="onSelectList($event)">{{ list.name }}</a></li>
-          </ul>
+          <div *ngIf="clicked && !added">
+            <ul class=" pl-0 mt-2">
+              <li class=" text-primary" *ngFor="let list of lists"><a class="mt-4" (click)="onSelectList($event)">{{ list.name }}</a></li>
+            </ul>
+          </div>
         </div>
 
         <app-search-result [searchResult]="searchResult"
