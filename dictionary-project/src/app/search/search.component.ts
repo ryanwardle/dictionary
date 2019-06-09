@@ -32,6 +32,7 @@ export class SearchComponent implements OnInit {
   uniqueWord = true;
   selectedList;
   selectedListIndex;
+  wordIsRandom = false;
 
 
   constructor(private retrieveData: GetDataService,
@@ -44,6 +45,7 @@ export class SearchComponent implements OnInit {
   onSearchWord(event: any) {
 
     // THIS HIDES THE TEXT THAT TELLS THE LAST WORD ADDED ONCE YOU SEARCH FOR A NEW WORD.
+    this.uniqueWord = true;
     this.added = false;
     this.clicked = false;
 
@@ -66,8 +68,6 @@ export class SearchComponent implements OnInit {
 // METHOD THAT GETS WORD DATA AND ORGANIZES INTO WORD MODEL
   getWordData(word): any {
     this.returnedWord = this.retrieveData.getData(word).subscribe(data => {
-
-      console.log(data);
       this.wordCheck = data[0].length;
       this.error = 1;
 
@@ -80,7 +80,6 @@ export class SearchComponent implements OnInit {
           break;
         }
       }
-
 
       const relatedWordsArray = data[1];
 
@@ -100,6 +99,9 @@ export class SearchComponent implements OnInit {
 
   error => this.error = error.status
     );
+
+    // if (this.wordIsRandom && this.error === 404) { this.onRandomWord(); }
+    // console.log(this.error);
   }
 
 
@@ -110,6 +112,7 @@ export class SearchComponent implements OnInit {
     this.added = false;
     this.clicked = false;
 
+    this.wordIsRandom = true;
     let wordObject;
     wordObject = this.retrieveData.getRandomWord();
     wordObject.subscribe(data => {
