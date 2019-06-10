@@ -1,7 +1,7 @@
 <ng-container *ngIf="error === 0; else displayContent"></ng-container>
 
 <ng-template #displayContent>
-  <ng-container *ngIf="error !== 404; else noResultFound">
+  <ng-container *ngIf="error !== 404  || (error === 404 && wordIsRandom === true); else noResultFound">
     <div class="card text-center w-100 mt-5 mb-5">
       <div class="card-header lead">
         Search Results

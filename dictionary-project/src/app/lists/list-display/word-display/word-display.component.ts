@@ -12,6 +12,7 @@ export class WordDisplayComponent implements OnInit {
   lists;
   buttonToggleText = 'More';
   toggle = false;
+  wordIndex;
   id;
   href;
 
@@ -42,6 +43,10 @@ export class WordDisplayComponent implements OnInit {
       this.buttonToggleText = 'Less';
       this.toggle = !this.toggle;
     }
+  }
+
+  onDeleteWord(wordIndex) {
+    this.words.splice(wordIndex, 1);
   }
 
 }

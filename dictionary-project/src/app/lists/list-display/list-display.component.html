@@ -1,17 +1,26 @@
 <div class="row">
   <div class="col" id="accordian">
     <div class="card text-center mt-4 mb-4" *ngFor="let list of lists; let i = index">
-      <div class="card-header lead d-flex justify-content-center align-items-center">
-        <h4 class="ml-auto">
-          <a href="#collapse-{{ i }}" data-parent="#accordian" data-toggle="collapse">
-            {{ list.name }}
-          </a>
-        </h4>
-        <p class="ml-auto">
-          <a style="cursor: pointer;" (click)="onDeleteList(i)" class="text-danger">
-            Delete this list
-          </a>
-        </p>
+      <div class="card-header lead d-flex">
+
+        <div class="col-sm-4"></div>
+
+        <div class="col-sm-4 text-center">
+          <h4>
+            <a href="#collapse-{{ i }}" data-parent="#accordian" data-toggle="collapse">
+              {{ list.name }}
+            </a>
+          </h4>
+        </div>
+
+        <div class="col-sm-4 text-right">
+          <p>
+            <a style="cursor: pointer;" (click)="onDeleteList(i)" class="text-danger">
+              <small>Delete this list</small>
+            </a>
+          </p>
+        </div>
+
       </div>
 
       <div class="collapse" id="collapse-{{ i }}">

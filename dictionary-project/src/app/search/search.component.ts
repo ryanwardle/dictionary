@@ -97,11 +97,13 @@ export class SearchComponent implements OnInit {
       this.searchResult = new Word (word, this.definition, this.partOfSpeech, this.antonyms, this.synonyms, this.attributionText);
     },
 
-  error => this.error = error.status
-    );
+  error => {
+    this.error = error.status;
 
-    // if (this.wordIsRandom && this.error === 404) { this.onRandomWord(); }
-    // console.log(this.error);
+    // WILL CALL ONRANDOMWORD() UNTIL A WORD RETURNS DATA
+      if (this.wordIsRandom && this.error === 404) { this.onRandomWord(); }
+  }
+    );
   }
 
 
@@ -120,6 +122,7 @@ export class SearchComponent implements OnInit {
       this.getWordData(this.submittedWord);
     });
   }
+
 
   onAddWord() {
     this.clicked = true;

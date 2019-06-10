@@ -13,6 +13,7 @@ export class SearchResultComponent implements OnInit {
   @Input() attributionText: string;
   @Input() antonymLength: number;
   @Input() synonymLength: number;
+  @Input() wordIsRandom: boolean;
 
   toggle = false;
   buttonToggleText = 'More';
