@@ -4,7 +4,6 @@ import { HomeComponent } from './home/home/home.component';
 import { SearchComponent } from './search/search.component';
 import { ListsComponent } from './lists/lists.component';
 import { ListDisplayComponent } from './lists/list-display/list-display.component';
-import { EditListComponent } from './lists/edit-list/edit-list.component';
 
 
 // WILL NEED TO ADD ID'S TO LISTS BASED ON ORDER OF ARRAY AND THEN ASSIGN TO ROUTE
@@ -15,7 +14,7 @@ const routes: Routes = [
     {path: '', component: SearchComponent}
   ]},
   {path: 'lists', component: ListsComponent, children: [
-    {path: '', component: ListDisplayComponent}, {path: 'edit', component: EditListComponent}
+    {path: '', component: ListDisplayComponent}
   ]},
   // May need to add a page not found route
   {path: '**', redirectTo: ''}

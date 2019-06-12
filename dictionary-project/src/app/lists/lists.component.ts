@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { ListService } from '../list.service';
 
 @Component({
@@ -12,9 +11,7 @@ export class ListsComponent implements OnInit {
   uniqueList = true;
   currentLists;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private listService: ListService) { }
+  constructor(private listService: ListService) { }
 
   ngOnInit() {
   }
@@ -42,8 +39,4 @@ export class ListsComponent implements OnInit {
     }
   }
 
-
-  onEditList() {
-    this.router.navigate(['edit'], {relativeTo: this.route});
-  }
 }
