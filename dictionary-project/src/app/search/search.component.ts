@@ -45,7 +45,6 @@ export class SearchComponent implements OnInit {
   onSearchWord(event: any) {
 
     // THIS HIDES THE TEXT THAT TELLS THE LAST WORD ADDED ONCE YOU SEARCH FOR A NEW WORD.
-    this.uniqueWord = true;
     this.added = false;
     this.clicked = false;
 
@@ -70,6 +69,8 @@ export class SearchComponent implements OnInit {
     this.returnedWord = this.retrieveData.getData(word).subscribe(data => {
       this.wordCheck = data[0].length;
       this.error = 1;
+      // SETS WORD TO BEING UNIQUE, IS CHECKED IN ONSELECTLIST()
+      this.uniqueWord = true;
 
     // FINDS FIRST RETURNED OBJECT THAT RETURNS DEFINITION
       for (let i = 0; i < data[0].length; i++) {
