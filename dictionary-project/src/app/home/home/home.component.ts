@@ -8,7 +8,24 @@ import { GetDataService } from '../../get-data.service';
 })
 export class HomeComponent implements OnInit {
 
-  wordOfTheDay: {} = {};
+  wordOfTheDay: {
+    word: string,
+    definition: string,
+    partOfSpeech: string,
+    note: string,
+    example: string,
+    exampleAttribution: string,
+    attributionText: string
+  } = {
+    word: '',
+    definition: '',
+    partOfSpeech: '',
+    note: '',
+    example: '',
+    exampleAttribution: '',
+    attributionText: ''
+  };
+
   randomWord;
   toggle = false;
   buttonToggleText = 'More';
